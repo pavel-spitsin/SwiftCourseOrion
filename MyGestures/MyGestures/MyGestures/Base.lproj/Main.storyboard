@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyGestures" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creature-monkey-happy" translatesAutoresizingMaskIntoConstraints="NO" id="6xs-5h-HqL">
+                                <rect key="frame" x="157" y="318" width="100" height="100"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="3f3-Yy-xbe"/>
+                                    <constraint firstAttribute="height" constant="100" id="Qyd-B5-6wf"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="1pu-pk-2JA" appends="YES" id="vGP-bd-Eq7"/>
+                                    <outletCollection property="gestureRecognizers" destination="cJO-Y6-fCh" appends="YES" id="SCl-i9-gf8"/>
+                                    <outletCollection property="gestureRecognizers" destination="GvF-YA-ncf" appends="YES" id="YUk-Pv-9Vu"/>
+                                    <outletCollection property="gestureRecognizers" destination="sJJ-MO-yBK" appends="YES" id="Dw9-mO-9ZO"/>
+                                    <outletCollection property="gestureRecognizers" destination="3wd-MT-IWZ" appends="YES" id="4wO-sH-mKq"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6xs-5h-HqL" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="CK8-pP-2zh"/>
+                            <constraint firstItem="6xs-5h-HqL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ku6-dh-jgy"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fJH-AN-jh4" appends="YES" id="3QT-Mg-Gpi"/>
+                            <outletCollection property="gestureRecognizers" destination="16x-lJ-S5y" appends="YES" id="Kqg-Jt-UtU"/>
+                            <outletCollection property="gestureRecognizers" destination="v0m-xa-mdh" appends="YES" id="dmA-JV-YkY"/>
+                            <outletCollection property="gestureRecognizers" destination="wVD-Hb-afv" appends="YES" id="rvI-Kx-ol5"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="customGesture" destination="wVD-Hb-afv" id="hj6-9V-BUH"/>
+                        <outlet property="imageView" destination="6xs-5h-HqL" id="YtA-mc-Ocm"/>
+                        <outlet property="longPressGesture" destination="v0m-xa-mdh" id="igO-rn-dj3"/>
+                        <outlet property="panGesture" destination="sJJ-MO-yBK" id="9Ed-Ys-lID"/>
+                        <outlet property="pinch" destination="cJO-Y6-fCh" id="a07-cE-WGd"/>
+                        <outlet property="rotationGesture" destination="GvF-YA-ncf" id="97z-OS-KHe"/>
+                        <outlet property="screenEdgePanGesture" destination="16x-lJ-S5y" id="Qv8-wU-qJJ"/>
+                        <outlet property="swipeGesture" destination="fJH-AN-jh4" id="C6R-Vv-WkF"/>
+                        <outlet property="tap" destination="1pu-pk-2JA" id="co9-A1-BeV"/>
+                        <outlet property="twoFingersDoubleTap" destination="3wd-MT-IWZ" id="g4u-n7-yT3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1pu-pk-2JA">
+                    <connections>
+                        <action selector="tapGestureAction:" destination="BYZ-38-t0r" id="bGo-Nb-heT"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="N6n-Ox-chM"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" numberOfTouchesRequired="2" id="3wd-MT-IWZ" userLabel="Two Fingers Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="twoFingersDoubleTapAction:" destination="BYZ-38-t0r" id="STd-xj-OVq"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="cJO-Y6-fCh">
+                    <connections>
+                        <action selector="pinchGestureAction:" destination="BYZ-38-t0r" id="UHV-c0-esp"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="s8v-4E-dDN"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="sJJ-MO-yBK">
+                    <connections>
+                        <action selector="panGestureAction:" destination="BYZ-38-t0r" id="HZv-qL-vpb"/>
+                    </connections>
+                </panGestureRecognizer>
+                <rotationGestureRecognizer id="GvF-YA-ncf">
+                    <connections>
+                        <action selector="rotationGestureAction:" destination="BYZ-38-t0r" id="OX9-me-8om"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="4lg-kz-Re2"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="fJH-AN-jh4">
+                    <connections>
+                        <action selector="swipeGestureAction:" destination="BYZ-38-t0r" id="vss-Fq-cty"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="VZw-bc-M7i"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="16x-lJ-S5y">
+                    <connections>
+                        <action selector="screenEdgePanGestureAction:" destination="BYZ-38-t0r" id="3jZ-Ig-7ra"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="i56-O6-s7I"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="v0m-xa-mdh">
+                    <connections>
+                        <action selector="longPressGestureAction:" destination="BYZ-38-t0r" id="uHN-pC-lQH"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="Yli-l5-28D"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <gestureRecognizer id="wVD-Hb-afv" customClass="CustomGestureRecognizer" customModule="MyGestures" customModuleProvider="target">
+                    <connections>
+                        <action selector="customGestureAction:" destination="BYZ-38-t0r" id="fig-fb-DGU"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="zPq-3K-YCs"/>
+                    </connections>
+                </gestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-480" y="212"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="creature-monkey-happy" width="150" height="150"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
