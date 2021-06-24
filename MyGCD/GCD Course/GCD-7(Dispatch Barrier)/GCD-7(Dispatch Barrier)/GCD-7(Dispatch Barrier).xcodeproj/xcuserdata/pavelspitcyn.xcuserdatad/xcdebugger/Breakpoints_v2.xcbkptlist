@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "90004298-687F-464B-A76C-44F11D225D84"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9DCB07F3-3185-40C2-B622-FA73634192BE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GCD-7(Dispatch Barrier)/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9DCB07F3-3185-40C2-B622-FA73634192BE - 20856f64833169df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GCD_7_Dispatch_Barrier_.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "GCD-7(Dispatch Barrier)"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelspitcyn/Documents/Swift%20%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B8%D0%BD%D0%B3/GCD%20Course/GCD-7(Dispatch%20Barrier)/GCD-7(Dispatch%20Barrier)/GCD-7(Dispatch%20Barrier)/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "9DCB07F3-3185-40C2-B622-FA73634192BE - faa312b14089ea79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; () in GCD_7_Dispatch_Barrier_.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "GCD-7(Dispatch Barrier)"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelspitcyn/Documents/Swift%20%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B8%D0%BD%D0%B3/GCD%20Course/GCD-7(Dispatch%20Barrier)/GCD-7(Dispatch%20Barrier)/GCD-7(Dispatch%20Barrier)/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41E99F02-D995-4E15-B642-C1F8C013D806"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GCD-7(Dispatch Barrier)/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "append(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99A2D9F6-97C1-4491-83CA-23DB74A8DFF6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GCD-7(Dispatch Barrier)/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "valueArray"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

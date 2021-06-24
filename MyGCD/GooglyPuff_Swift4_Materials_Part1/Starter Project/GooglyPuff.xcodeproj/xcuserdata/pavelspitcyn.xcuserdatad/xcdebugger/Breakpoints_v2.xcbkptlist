@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "1DDA4331-745F-494A-BE10-9C5D0EB45E64"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA74D0EB-749E-458F-ABD3-F190BED52A16"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooglyPuff/PhotoDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "drawEyeBallForFrame(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "683D9DB7-D029-4A9C-8BD3-93E2109A2D91"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooglyPuff/PhotoDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "faceOverlayImageFrom(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "683D9DB7-D029-4A9C-8BD3-93E2109A2D91 - 9cc0c961a481a6e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GooglyPuff.PhotoDetailViewController.faceOverlayImageFrom(__C.UIImage) -&gt; __C.UIImage"
+                  moduleName = "GooglyPuff"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelspitcyn/Documents/Swift%20%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B8%D0%BD%D0%B3/Xcode%20documents/MyGCD/GooglyPuff_Swift4_Materials_Part1/Starter%20Project/GooglyPuff/PhotoDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "736">
+               </Location>
+               <Location
+                  uuid = "683D9DB7-D029-4A9C-8BD3-93E2109A2D91 - 9cc0c961a481a6e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GooglyPuff.PhotoDetailViewController.faceOverlayImageFrom(__C.UIImage) -&gt; __C.UIImage"
+                  moduleName = "GooglyPuff"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelspitcyn/Documents/Swift%20%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B8%D0%BD%D0%B3/Xcode%20documents/MyGCD/GooglyPuff_Swift4_Materials_Part1/Starter%20Project/GooglyPuff/PhotoDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "3268">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "377358AB-E978-4DA5-8D76-BA67409BDB7C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooglyPuff/PhotoDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "faceOverlayImageFrom(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
