@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sender" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sender application" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwA-Lf-oCP">
+                                <rect key="frame" x="0.0" y="64" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cE5-70-4rd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Что будем искать?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4r-NR-E1m">
+                                <rect key="frame" x="0.0" y="194" width="414" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="H6h-c5-j8i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ox8-ip-QPD">
+                                <rect key="frame" x="20" y="245" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVC-KI-LJb">
+                                <rect key="frame" x="107" y="309" width="200" height="60"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.33358625136902093" blue="0.37895884752286713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="VYd-mx-IjK"/>
+                                    <constraint firstAttribute="width" constant="200" id="h6i-ox-ZJm"/>
+                                </constraints>
+                                <state key="normal" title="Открыть Apple Maps">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="mapsBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B3X-rL-mS7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0U-y4-4wi">
+                                <rect key="frame" x="107" y="399" width="200" height="60"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.33358625139999998" blue="0.37895884749999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="blG-9p-DhX"/>
+                                    <constraint firstAttribute="height" constant="60" id="oJd-tS-81f"/>
+                                </constraints>
+                                <state key="normal" title="Открыть Youtube">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="youtubeBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F7A-6s-h7U"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpZ-vu-wyA">
+                                <rect key="frame" x="107" y="489" width="200" height="60"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.33358625139999998" blue="0.37895884749999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="aUv-Jj-Ijx"/>
+                                    <constraint firstAttribute="height" constant="60" id="c7V-N2-MJg"/>
+                                </constraints>
+                                <state key="normal" title="Открыть ReceiverApp">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="receiverBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cRf-wW-BVM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.7698901129507747" green="0.69050437919923213" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="g0U-y4-4wi" firstAttribute="centerX" secondItem="YVC-KI-LJb" secondAttribute="centerX" id="06N-7U-Nsu"/>
+                            <constraint firstItem="YVC-KI-LJb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="43S-yv-b4x"/>
+                            <constraint firstItem="jpZ-vu-wyA" firstAttribute="top" secondItem="g0U-y4-4wi" secondAttribute="bottom" constant="30" id="8fh-I6-J9P"/>
+                            <constraint firstItem="Ox8-ip-QPD" firstAttribute="top" secondItem="U4r-NR-E1m" secondAttribute="bottom" constant="30" id="A7H-8Z-zEb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U4r-NR-E1m" secondAttribute="trailing" id="Gao-SP-eGd"/>
+                            <constraint firstItem="jpZ-vu-wyA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Gf7-3d-5yy"/>
+                            <constraint firstItem="g0U-y4-4wi" firstAttribute="top" secondItem="YVC-KI-LJb" secondAttribute="bottom" constant="30" id="LzX-vn-8Ls"/>
+                            <constraint firstItem="wwA-Lf-oCP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VeP-iG-iuC"/>
+                            <constraint firstItem="wwA-Lf-oCP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Wkx-sd-fs0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wwA-Lf-oCP" secondAttribute="trailing" id="YMf-KR-srP"/>
+                            <constraint firstItem="U4r-NR-E1m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="csg-cM-PdN"/>
+                            <constraint firstItem="YVC-KI-LJb" firstAttribute="top" secondItem="Ox8-ip-QPD" secondAttribute="bottom" constant="30" id="d0U-5i-q4a"/>
+                            <constraint firstAttribute="trailing" secondItem="Ox8-ip-QPD" secondAttribute="trailing" constant="20" symbolic="YES" id="hFm-cD-RGx"/>
+                            <constraint firstItem="Ox8-ip-QPD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="jIP-oa-TN0"/>
+                            <constraint firstItem="U4r-NR-E1m" firstAttribute="top" secondItem="wwA-Lf-oCP" secondAttribute="bottom" constant="100" id="xgO-hh-zqM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapsBtn" destination="YVC-KI-LJb" id="E1t-76-ed7"/>
+                        <outlet property="receiverBtn" destination="jpZ-vu-wyA" id="nBV-47-BdM"/>
+                        <outlet property="textField" destination="Ox8-ip-QPD" id="YV7-fB-cLL"/>
+                        <outlet property="youtubeBtn" destination="g0U-y4-4wi" id="sZq-Dc-dxM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="339.13043478260875" y="121.20535714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
