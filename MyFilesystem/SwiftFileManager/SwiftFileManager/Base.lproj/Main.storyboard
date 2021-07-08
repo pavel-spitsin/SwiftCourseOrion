@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftFileManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPc-6d-2Ux">
+                                <rect key="frame" x="0.0" y="84" width="414" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <state key="normal" title="Создать файл">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createFileBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ocu-XO-sUF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAN-iT-XR8">
+                                <rect key="frame" x="0.0" y="144" width="414" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <state key="normal" title="Прочитать файл">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="readFileBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Fq-KO-cth"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vU-RT-QXc">
+                                <rect key="frame" x="0.0" y="264" width="414" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <state key="normal" title="Посмотреть директорию">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewDirectoryBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JbI-uK-GYQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEV-Fg-wPd">
+                                <rect key="frame" x="0.0" y="204" width="414" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <state key="normal" title="Удалить файл">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteFileBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NiN-gJ-Q2N"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qEV-Fg-wPd" secondAttribute="trailing" id="1T7-yk-ajT"/>
+                            <constraint firstItem="VAN-iT-XR8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4Wj-7M-cid"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pPc-6d-2Ux" secondAttribute="trailing" id="7Ro-FB-mn2"/>
+                            <constraint firstItem="pPc-6d-2Ux" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8A9-bm-RwP"/>
+                            <constraint firstItem="pPc-6d-2Ux" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="9vi-Td-aAs"/>
+                            <constraint firstItem="VAN-iT-XR8" firstAttribute="height" secondItem="pPc-6d-2Ux" secondAttribute="height" id="PCT-Bt-Rg1"/>
+                            <constraint firstItem="9vU-RT-QXc" firstAttribute="height" secondItem="pPc-6d-2Ux" secondAttribute="height" id="STE-gd-wx0"/>
+                            <constraint firstItem="qEV-Fg-wPd" firstAttribute="top" secondItem="VAN-iT-XR8" secondAttribute="bottom" constant="30" id="WPo-v7-1pN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9vU-RT-QXc" secondAttribute="trailing" id="WuY-wt-nHX"/>
+                            <constraint firstItem="9vU-RT-QXc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZCA-Yt-Ysg"/>
+                            <constraint firstItem="9vU-RT-QXc" firstAttribute="top" secondItem="qEV-Fg-wPd" secondAttribute="bottom" constant="30" id="bBi-LF-oTT"/>
+                            <constraint firstItem="qEV-Fg-wPd" firstAttribute="height" secondItem="pPc-6d-2Ux" secondAttribute="height" id="dFI-Ro-LAZ"/>
+                            <constraint firstItem="qEV-Fg-wPd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="drb-ad-OVi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VAN-iT-XR8" secondAttribute="trailing" id="geZ-83-VZJ"/>
+                            <constraint firstItem="VAN-iT-XR8" firstAttribute="top" secondItem="pPc-6d-2Ux" secondAttribute="bottom" constant="30" id="s5d-CZ-Qd9"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-164" y="273"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
