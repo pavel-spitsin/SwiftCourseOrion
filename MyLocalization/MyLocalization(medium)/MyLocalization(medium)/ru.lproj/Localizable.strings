@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  MyLocalization(medium)
+
+  Created by Pavel Spitcyn on 12.07.2021.
+  
+*/
+
+"Welcome" = "Добро пожаловать";
+"Thank you for trying this app, you are a great person!" = "Спасибо за тест этого приложения, вы крутой";
+"Cancel" = "Отмена";
+"Signup" = "Готово";
