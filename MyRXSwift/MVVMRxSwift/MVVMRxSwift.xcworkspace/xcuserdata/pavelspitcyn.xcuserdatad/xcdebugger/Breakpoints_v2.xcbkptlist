@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "087F1E5C-20B7-4874-B25E-ACCE8C122C13"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3584590E-1527-4A15-87FF-828AA955A8D2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MVVMRxSwift/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3584590E-1527-4A15-87FF-828AA955A8D2 - defb99ec11f16b0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MVVMRxSwift.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "MVVMRxSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelspitcyn/Documents/Swift%20%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B8%D0%BD%D0%B3/Xcode%20documents/MyRXSwift/MVVMRxSwift/MVVMRxSwift/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "1116">
+               </Location>
+               <Location
+                  uuid = "3584590E-1527-4A15-87FF-828AA955A8D2 - c8c6ad59cb3926b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;) -&gt; Swift.String in MVVMRxSwift.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "MVVMRxSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelspitcyn/Documents/Swift%20%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B8%D0%BD%D0%B3/Xcode%20documents/MyRXSwift/MVVMRxSwift/MVVMRxSwift/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
