@@ -24,27 +24,12 @@ class ViewController: UIViewController {
         //Binding the UI
         viewModel.cityName.bind(to: cityNameLabel.rx.text).disposed(by: disposeBag)
         viewModel.degrees.bind(to: degreesLabel.rx.text).disposed(by: disposeBag)
-
-        /*
-        nameTextField.rx.text.subscribe { text in
-            self.viewModel.searchText.onNext(text)
-        }
-        .disposed(by: disposeBag)*/
-        
-        
-        /*
-        nameTextField.rx.controlEvent([.editingChanged])
-                .asObservable().subscribe({ [unowned self] _ in
-                    print("My text : \(self.nameTextField.text ?? "")")
-                }).disposed(by: disposeBag)
-*/
         
         nameTextField.rx.controlEvent([.editingChanged])
             .asObservable().subscribe({ _ in
                 self.viewModel.searchText.onNext(self.nameTextField.text)
                 }).disposed(by: disposeBag)
 
-            
     }
     
     

@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import SwiftyJSON
 
 class ViewModel {
 
@@ -51,8 +52,9 @@ class ViewModel {
         }
         .switchLatest()
 
-        jsonRequest.subscribe { json in
-            self.weather = Weather(json: json)
+    jsonRequest.subscribe { json in
+        
+        self.weather = Weather(json: json.element as Any)
         }
         .disposed(by: disposeBag)
     }

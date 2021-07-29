@@ -12,13 +12,12 @@ class Weather {
    var name:String?
    var degrees:Double?
  
-   init(json: AnyObject) {
+   init(json: Any) {
     
     let data = JSON(json)
-    
+
     self.name = data["name"].stringValue
     self.degrees = data["main"]["temp"].doubleValue
-    
    }
     
 }
