@@ -17,7 +17,7 @@
 		FB1B90E526B3F6480054497C /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90E426B3F6480054497C /* CarouselViewController.swift */; };
 		FB1B90E726B40B8A0054497C /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90E626B40B8A0054497C /* ScrollViewController.swift */; };
 		FB1B90E926B41BEF0054497C /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90E826B41BEF0054497C /* CarouselCollectionViewCell.swift */; };
-		FBD8F91526B43B18001C7F2B /* PhotoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8F91426B43B18001C7F2B /* PhotoFetcher.swift */; };
+		FBD8F91526B43B18001C7F2B /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8F91426B43B18001C7F2B /* PhotoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		FB1B90E426B3F6480054497C /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		FB1B90E626B40B8A0054497C /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		FB1B90E826B41BEF0054497C /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
-		FBD8F91426B43B18001C7F2B /* PhotoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFetcher.swift; sourceTree = "<group>"; };
+		FBD8F91426B43B18001C7F2B /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				FB1B90E426B3F6480054497C /* CarouselViewController.swift */,
 				FB1B90E826B41BEF0054497C /* CarouselCollectionViewCell.swift */,
 				FB1B90E626B40B8A0054497C /* ScrollViewController.swift */,
-				FBD8F91426B43B18001C7F2B /* PhotoFetcher.swift */,
+				FBD8F91426B43B18001C7F2B /* PhotoManager.swift */,
 				FB1B90DE26B3E0670054497C /* iPhone.storyboard */,
 				FB1B90E026B3E0800054497C /* iPad.storyboard */,
 				FB1B90D326B3DF9C0054497C /* Assets.xcassets */,
@@ -155,7 +155,7 @@
 			files = (
 				FB1B90E526B3F6480054497C /* CarouselViewController.swift in Sources */,
 				FB1B90CF26B3DF9B0054497C /* MosaicViewController.swift in Sources */,
-				FBD8F91526B43B18001C7F2B /* PhotoFetcher.swift in Sources */,
+				FBD8F91526B43B18001C7F2B /* PhotoManager.swift in Sources */,
 				FB1B90E726B40B8A0054497C /* ScrollViewController.swift in Sources */,
 				FB1B90CB26B3DF9B0054497C /* AppDelegate.swift in Sources */,
 				FB1B90E926B41BEF0054497C /* CarouselCollectionViewCell.swift in Sources */,
