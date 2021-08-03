@@ -27,7 +27,11 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MosaicCollectionViewCell", for: indexPath) as! MosaicCollectionViewCell
         
-        cell.imageView.image = PhotoManager.shared().imagesArray[indexPath.row]
+        //cell.imageView.image = PhotoManager.shared().imagesArray[indexPath.row]
+        
+        DispatchQueue.main.async {
+            cell.imageView.image = PhotoManager.shared().lowQualityImage(index: indexPath.row)
+        }
         
         return cell
     }
@@ -57,12 +61,11 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let storyboard = UIStoryboard(name: "iPhone", bundle: nil)
         let scrollViewController = storyboard.instantiateViewController(withIdentifier: "ScrollViewController") as! ScrollViewController
-
-        //scrollViewController.image = PhotoManager.shared().imagesArray[indexPath.row]
         
         scrollViewController.image = PhotoManager.shared().grabHighQualityPhoto(index: indexPath.row)
 
         self.navigationController?.pushViewController(scrollViewController, animated: true)
+
     }
 
     

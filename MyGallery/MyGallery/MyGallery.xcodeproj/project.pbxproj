@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9774CE626B95D470010BC17 /* SCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9774CE526B95D470010BC17 /* SCVCell.swift */; };
 		FB1B90CB26B3DF9B0054497C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90CA26B3DF9B0054497C /* AppDelegate.swift */; };
 		FB1B90CF26B3DF9B0054497C /* MosaicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90CE26B3DF9B0054497C /* MosaicViewController.swift */; };
 		FB1B90D426B3DF9C0054497C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB1B90D326B3DF9C0054497C /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9774CE526B95D470010BC17 /* SCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCVCell.swift; sourceTree = "<group>"; };
 		FB1B90C726B3DF9B0054497C /* MyGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1B90CA26B3DF9B0054497C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB1B90CE26B3DF9B0054497C /* MosaicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				FB1B90E426B3F6480054497C /* CarouselViewController.swift */,
 				FB1B90E826B41BEF0054497C /* CarouselCollectionViewCell.swift */,
 				FB1B90E626B40B8A0054497C /* ScrollViewController.swift */,
+				E9774CE526B95D470010BC17 /* SCVCell.swift */,
 				FBD8F91426B43B18001C7F2B /* PhotoManager.swift */,
 				FB1B90DE26B3E0670054497C /* iPhone.storyboard */,
 				FB1B90E026B3E0800054497C /* iPad.storyboard */,
@@ -157,6 +160,7 @@
 				FB1B90CF26B3DF9B0054497C /* MosaicViewController.swift in Sources */,
 				FBD8F91526B43B18001C7F2B /* PhotoManager.swift in Sources */,
 				FB1B90E726B40B8A0054497C /* ScrollViewController.swift in Sources */,
+				E9774CE626B95D470010BC17 /* SCVCell.swift in Sources */,
 				FB1B90CB26B3DF9B0054497C /* AppDelegate.swift in Sources */,
 				FB1B90E926B41BEF0054497C /* CarouselCollectionViewCell.swift in Sources */,
 				FB1B90E326B3E7C00054497C /* MosaicCollectionViewCell.swift in Sources */,

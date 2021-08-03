@@ -28,7 +28,11 @@ class CarouselViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as! CarouselCollectionViewCell
         
-        cell.imageView.image = PhotoManager.shared().imagesArray[indexPath.row]
+        DispatchQueue.main.async {
+            cell.imageView.image = PhotoManager.shared().mediumQualityImage(index: indexPath.row)
+        }
+        
+        //cell.imageView.image = PhotoManager.shared().imagesArray[indexPath.row]
         
         return cell
     }
@@ -40,8 +44,6 @@ class CarouselViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let storyboard = UIStoryboard(name: "iPhone", bundle: nil)
         let scrollViewController = storyboard.instantiateViewController(withIdentifier: "ScrollViewController") as! ScrollViewController
-
-        //scrollViewController.image = PhotoManager.shared().imagesArray[indexPath.row]
         
         scrollViewController.image = PhotoManager.shared().grabHighQualityPhoto(index: indexPath.row)
         
@@ -59,7 +61,8 @@ class CarouselViewController: UIViewController, UICollectionViewDataSource, UICo
     }
 }
 
-//MARK: Notification extension
+
+    //MARK: - Notification extension
 
 extension Notification.Name {
     static let reloadCarouselData = NSNotification.Name("reloadCarouselData")
