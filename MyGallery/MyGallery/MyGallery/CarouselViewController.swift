@@ -21,18 +21,20 @@ class CarouselViewController: UIViewController, UICollectionViewDataSource, UICo
     //MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PhotoManager.shared().imagesArray.count
+        return PhotoManager.shared().fetchResultCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as! CarouselCollectionViewCell
         
-        DispatchQueue.main.async {
-            cell.imageView.image = PhotoManager.shared().mediumQualityImage(index: indexPath.row)
+        DispatchQueue.global(qos: .default).async {
+            let image = PhotoManager.shared().mediumQualityImage(index: indexPath.row)
+            
+            DispatchQueue.main.async {
+                cell.imageView.image = image
+            }
         }
-        
-        //cell.imageView.image = PhotoManager.shared().imagesArray[indexPath.row]
         
         return cell
     }
@@ -44,8 +46,8 @@ class CarouselViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let storyboard = UIStoryboard(name: "iPhone", bundle: nil)
         let scrollViewController = storyboard.instantiateViewController(withIdentifier: "ScrollViewController") as! ScrollViewController
-        
-        scrollViewController.image = PhotoManager.shared().grabHighQualityPhoto(index: indexPath.row)
+
+        scrollViewController.cellIndexPath = indexPath
         
         self.navigationController?.pushViewController(scrollViewController, animated: true)
     }

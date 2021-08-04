@@ -9,7 +9,6 @@ import UIKit
 
 class CarouselCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var imageView: UIImageView!
     
 }

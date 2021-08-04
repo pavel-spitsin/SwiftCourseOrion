@@ -21,4 +21,5 @@ class SCVCell: UICollectionViewCell, UIScrollViewDelegate {
     func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         scrollview.zoomScale = 1.0
     }
+    
 }

@@ -13,24 +13,34 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserChecker.shared.isNewUser() {
+            let welcomeVC = storyboard?.instantiateViewController(identifier: "WelcomeViewController") as! PageViewController
+            welcomeVC.modalPresentationStyle = .fullScreen
+            present(welcomeVC, animated: true, completion: nil)
+        }
 
         NotificationCenter.default.addObserver(self, selector: #selector(reloadMosaicCollectionView), name: .reloadMosaicData, object: nil)
+        
+        PhotoManager.shared().checkPermissions()
     }
 
     
     //MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PhotoManager.shared().imagesArray.count
+        return PhotoManager.shared().fetchResultCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MosaicCollectionViewCell", for: indexPath) as! MosaicCollectionViewCell
-        
-        //cell.imageView.image = PhotoManager.shared().imagesArray[indexPath.row]
-        
-        DispatchQueue.main.async {
-            cell.imageView.image = PhotoManager.shared().lowQualityImage(index: indexPath.row)
+
+        DispatchQueue.global(qos: .default).async {
+            let image = PhotoManager.shared().lowQualityImage(index: indexPath.row)
+            
+            DispatchQueue.main.async {
+                cell.imageView.image = image
+            }
         }
         
         return cell
@@ -42,7 +52,6 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
     //To set 3 cells per row
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = mosaicCollectionView.bounds.width / 3 - 1
-        
         return CGSize(width: width, height: width)
     }
     
@@ -61,9 +70,9 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let storyboard = UIStoryboard(name: "iPhone", bundle: nil)
         let scrollViewController = storyboard.instantiateViewController(withIdentifier: "ScrollViewController") as! ScrollViewController
-        
-        scrollViewController.image = PhotoManager.shared().grabHighQualityPhoto(index: indexPath.row)
 
+        scrollViewController.cellIndexPath = indexPath
+        
         self.navigationController?.pushViewController(scrollViewController, animated: true)
 
     }
@@ -77,6 +86,7 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
         DispatchQueue.main.async {
             self.mosaicCollectionView.reloadData()
         }
+        
     }
 }
 
