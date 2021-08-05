@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SCVCell: UICollectionViewCell, UIScrollViewDelegate {
+class ZoomCell: UICollectionViewCell, UIScrollViewDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollview: UIScrollView!
 

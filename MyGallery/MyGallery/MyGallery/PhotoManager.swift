@@ -11,6 +11,8 @@ import Photos
 
 class PhotoManager {
     
+    var imagesArray = [UIImage]()
+    
     //Singleton
     private static var sharedManager: PhotoManager?
     private init() {}
@@ -109,5 +111,18 @@ class PhotoManager {
         return imageForReturn
     }
     
+    func fillImagesArray() {
+        let imgManager = PHImageManager.default()
+        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: prepareOptionsForFetch())
+        
+        for i in 0..<fetchResult.count {
+            imgManager.requestImage(for: fetchResult.object(at: i),
+                                    targetSize: CGSize(width: 200, height: 200),
+                                    contentMode: .aspectFill,
+                                    options: prepareOptionsForRequest()) { image, error in
+                self.imagesArray.append(image!)
+            }
+        }
+    }
 }
 

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Carousel View Controller-->
         <scene sceneID="gPP-yE-vA4">
             <objects>
                 <viewController id="MJd-3D-u7Q" customClass="CarouselViewController" customModule="MyGallery" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,7 +67,7 @@
                             <constraint firstItem="8oT-M7-PX9" firstAttribute="leading" secondItem="wMc-li-lHH" secondAttribute="leading" id="ky6-5O-1eV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="3BM-Bi-N7Y"/>
+                    <tabBarItem key="tabBarItem" title="" image="layout-arrange-08-7" id="3BM-Bi-N7Y"/>
                     <connections>
                         <outlet property="carouselCollectionView" destination="8oT-M7-PX9" id="Fpx-cG-WQm"/>
                     </connections>
@@ -94,7 +94,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SCVCell" id="pLB-sD-sCd" customClass="SCVCell" customModule="MyGallery" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SCVCell" id="pLB-sD-sCd" customClass="ZoomCell" customModule="MyGallery" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bOx-Pz-tIc">
@@ -168,7 +168,7 @@
             </objects>
             <point key="canvasLocation" x="3637.68115942029" y="-252.45535714285714"/>
         </scene>
-        <!--Item 1-->
+        <!--Mosaic View Controller-->
         <scene sceneID="VLN-aS-Hql">
             <objects>
                 <viewController id="v5F-uc-56t" customClass="MosaicViewController" customModule="MyGallery" customModuleProvider="target" sceneMemberID="viewController">
@@ -222,7 +222,7 @@
                             <constraint firstItem="bV4-ED-2Po" firstAttribute="leading" secondItem="tpX-E1-uIA" secondAttribute="leading" id="vww-tK-EW6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Lhb-37-32W"/>
+                    <tabBarItem key="tabBarItem" title="" image="square-individual-nine-7" id="Lhb-37-32W"/>
                     <connections>
                         <outlet property="mosaicCollectionView" destination="bV4-ED-2Po" id="Jz2-76-Bgi"/>
                     </connections>
@@ -231,11 +231,11 @@
             </objects>
             <point key="canvasLocation" x="2686.9565217391305" y="-252.45535714285714"/>
         </scene>
-        <!--Gallery-->
+        <!--Tab Bar Controller-->
         <scene sceneID="zCL-33-rmQ">
             <objects>
-                <tabBarController id="QHN-AE-yTR" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Gallery" id="hQr-Of-UGU"/>
+                <tabBarController id="QHN-AE-yTR" customClass="TabBarController" customModule="MyGallery" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hQr-Of-UGU"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dck-KA-7VC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -329,6 +329,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="layout-arrange-08-7" width="30" height="29"/>
+        <image name="square-individual-nine-7" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

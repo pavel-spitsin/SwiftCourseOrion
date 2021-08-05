@@ -7,23 +7,21 @@
 
 import UIKit
 
-class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+class PageViewController: UIPageViewController, UIPageViewControllerDataSource {
 
-    var vcs = [UIViewController]()
+    var viewControllersArray = [UIViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        delegate = self
         dataSource = self
 
         for _ in 0..<3 {
             let vc = storyboard?.instantiateViewController(identifier: "FirstViewController") as! WelcomeViewController
-            vc.pageVC = self
-            vcs.append(vc)
+            viewControllersArray.append(vc)
         }
         
-        if let firstViewController = vcs.first {
+        if let firstViewController = viewControllersArray.first {
                 setViewControllers([firstViewController],
                                    direction: .forward,
                                    animated: true,
@@ -37,7 +35,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        guard let viewControllerIndex = vcs.firstIndex(of: viewController) else {
+        guard let viewControllerIndex = viewControllersArray.firstIndex(of: viewController) else {
                     return nil
                 }
                 
@@ -47,21 +45,21 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
                     return nil
                 }
                 
-                guard vcs.count > previousIndex else {
+                guard viewControllersArray.count > previousIndex else {
                     return nil
                 }
                 
-                return vcs[previousIndex]
+                return viewControllersArray[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        guard let viewControllerIndex = vcs.lastIndex(of: viewController) else {
+        guard let viewControllerIndex = viewControllersArray.lastIndex(of: viewController) else {
             return nil
         }
         
         let nextIndex = viewControllerIndex + 1
-        let orderedViewControllersCount = vcs.count
+        let orderedViewControllersCount = viewControllersArray.count
 
         guard orderedViewControllersCount != nextIndex else {
             return nil
@@ -71,7 +69,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             return nil
         }
         
-        return vcs[nextIndex]
+        return viewControllersArray[nextIndex]
         
     }
 

@@ -8,7 +8,7 @@
 import UIKit
 
 class MosaicViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
+    
     @IBOutlet weak var mosaicCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -34,6 +34,7 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MosaicCollectionViewCell", for: indexPath) as! MosaicCollectionViewCell
+
 
         DispatchQueue.global(qos: .default).async {
             let image = PhotoManager.shared().lowQualityImage(index: indexPath.row)
@@ -82,16 +83,14 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @objc
     func reloadMosaicCollectionView() {
-        
         DispatchQueue.main.async {
             self.mosaicCollectionView.reloadData()
         }
-        
     }
 }
 
 
-//MARK: Notification extension
+    //MARK: - Notification extension
 
 extension Notification.Name {
     static let reloadMosaicData = NSNotification.Name("reloadMosaicData")

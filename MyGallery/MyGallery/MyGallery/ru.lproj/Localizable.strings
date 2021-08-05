@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  MyGallery
+
+  Created by Павел on 05.08.2021.
+  
+*/
+
+// 1st weclome screen
+"1st_welcome_screen_label_text" = "Добро пожаловать!";
+"1st_welcome_screen_button_text" = "Далее";
+
+// 2nd welcome screen
+"2nd_welcome_screen_label_text" = "Это тестовое приложение для просмотра вашей фотогалереи";
+"2nd_welcome_screen_button_text" = "Далее";
+
+// 3rd welcome screen
+"3rd_welcome_screen_label_text" = "Поехали!";
+"3rd_welcome_screen_button_text" = "Начать";
+
+// Navigation view controller
+"navigationBar_title_text" = "Галерея";

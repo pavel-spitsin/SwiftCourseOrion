@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScrollViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ScrollViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var itemsForShare = [UIImage]()
     var cellIndexPath = IndexPath()
@@ -38,7 +38,7 @@ class ScrollViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SCVCell", for: indexPath) as! SCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SCVCell", for: indexPath) as! ZoomCell
         
         itemsForShare.removeAll()
 

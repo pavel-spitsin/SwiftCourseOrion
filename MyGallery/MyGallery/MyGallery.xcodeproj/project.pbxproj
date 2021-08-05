@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E9774CE626B95D470010BC17 /* SCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9774CE526B95D470010BC17 /* SCVCell.swift */; };
+		E94C979626BC42C40034166B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E94C979826BC42C40034166B /* Localizable.strings */; };
+		E94C97A526BC4E4B0034166B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E94C97A726BC4E4B0034166B /* InfoPlist.strings */; };
+		E94C97AE26BC548A0034166B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C97AD26BC548A0034166B /* TabBarController.swift */; };
+		E9774CE626B95D470010BC17 /* ZoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9774CE526B95D470010BC17 /* ZoomCell.swift */; };
 		FB135BED26BAB28B002E5F68 /* UserChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB135BEC26BAB28B002E5F68 /* UserChecker.swift */; };
 		FB135BEF26BAB3A8002E5F68 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB135BEE26BAB3A8002E5F68 /* PageViewController.swift */; };
 		FB135BF126BAB714002E5F68 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB135BF026BAB714002E5F68 /* WelcomeViewController.swift */; };
@@ -25,7 +28,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E9774CE526B95D470010BC17 /* SCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCVCell.swift; sourceTree = "<group>"; };
+		E94C979326BC41F10034166B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E94C979726BC42C40034166B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E94C979926BC42CA0034166B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E94C97A626BC4E4B0034166B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E94C97A826BC4E4D0034166B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E94C97AB26BC4F180034166B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E94C97AD26BC548A0034166B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E9774CE526B95D470010BC17 /* ZoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomCell.swift; sourceTree = "<group>"; };
 		FB135BEC26BAB28B002E5F68 /* UserChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChecker.swift; sourceTree = "<group>"; };
 		FB135BEE26BAB3A8002E5F68 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		FB135BF026BAB714002E5F68 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -34,7 +44,6 @@
 		FB1B90CE26B3DF9B0054497C /* MosaicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicViewController.swift; sourceTree = "<group>"; };
 		FB1B90D326B3DF9C0054497C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB1B90D626B3DF9C0054497C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FB1B90D826B3DF9C0054497C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB1B90DE26B3E0670054497C /* iPhone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		FB1B90E026B3E0800054497C /* iPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		FB1B90E226B3E7C00054497C /* MosaicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -75,21 +84,24 @@
 			isa = PBXGroup;
 			children = (
 				FB1B90CA26B3DF9B0054497C /* AppDelegate.swift */,
+				E94C97AD26BC548A0034166B /* TabBarController.swift */,
 				FB1B90CE26B3DF9B0054497C /* MosaicViewController.swift */,
 				FB1B90E226B3E7C00054497C /* MosaicCollectionViewCell.swift */,
 				FB1B90E426B3F6480054497C /* CarouselViewController.swift */,
 				FB1B90E826B41BEF0054497C /* CarouselCollectionViewCell.swift */,
 				FB1B90E626B40B8A0054497C /* ScrollViewController.swift */,
-				E9774CE526B95D470010BC17 /* SCVCell.swift */,
+				E9774CE526B95D470010BC17 /* ZoomCell.swift */,
 				FBD8F91426B43B18001C7F2B /* PhotoManager.swift */,
 				FB135BEE26BAB3A8002E5F68 /* PageViewController.swift */,
 				FB135BF026BAB714002E5F68 /* WelcomeViewController.swift */,
 				FB135BEC26BAB28B002E5F68 /* UserChecker.swift */,
 				FB1B90DE26B3E0670054497C /* iPhone.storyboard */,
 				FB1B90E026B3E0800054497C /* iPad.storyboard */,
+				E94C979826BC42C40034166B /* Localizable.strings */,
+				E94C97AB26BC4F180034166B /* Info.plist */,
+				E94C97A726BC4E4B0034166B /* InfoPlist.strings */,
 				FB1B90D326B3DF9C0054497C /* Assets.xcassets */,
 				FB1B90D526B3DF9C0054497C /* LaunchScreen.storyboard */,
-				FB1B90D826B3DF9C0054497C /* Info.plist */,
 			);
 			path = MyGallery;
 			sourceTree = "<group>";
@@ -135,6 +147,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = FB1B90BE26B3DF9B0054497C;
 			productRefGroup = FB1B90C826B3DF9B0054497C /* Products */;
@@ -151,6 +164,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94C979626BC42C40034166B /* Localizable.strings in Resources */,
+				E94C97A526BC4E4B0034166B /* InfoPlist.strings in Resources */,
 				FB1B90E126B3E0800054497C /* iPad.storyboard in Resources */,
 				FB1B90D726B3DF9C0054497C /* LaunchScreen.storyboard in Resources */,
 				FB1B90DF26B3E0670054497C /* iPhone.storyboard in Resources */,
@@ -166,11 +181,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB1B90E526B3F6480054497C /* CarouselViewController.swift in Sources */,
+				E94C97AE26BC548A0034166B /* TabBarController.swift in Sources */,
 				FB1B90CF26B3DF9B0054497C /* MosaicViewController.swift in Sources */,
 				FB135BEF26BAB3A8002E5F68 /* PageViewController.swift in Sources */,
 				FBD8F91526B43B18001C7F2B /* PhotoManager.swift in Sources */,
 				FB1B90E726B40B8A0054497C /* ScrollViewController.swift in Sources */,
-				E9774CE626B95D470010BC17 /* SCVCell.swift in Sources */,
+				E9774CE626B95D470010BC17 /* ZoomCell.swift in Sources */,
 				FB1B90CB26B3DF9B0054497C /* AppDelegate.swift in Sources */,
 				FB1B90E926B41BEF0054497C /* CarouselCollectionViewCell.swift in Sources */,
 				FB1B90E326B3E7C00054497C /* MosaicCollectionViewCell.swift in Sources */,
@@ -182,10 +198,29 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		E94C979826BC42C40034166B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E94C979726BC42C40034166B /* ru */,
+				E94C979926BC42CA0034166B /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E94C97A726BC4E4B0034166B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E94C97A626BC4E4B0034166B /* ru */,
+				E94C97A826BC4E4D0034166B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		FB1B90D526B3DF9C0054497C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FB1B90D626B3DF9C0054497C /* Base */,
+				E94C979326BC41F10034166B /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -197,6 +232,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -258,6 +294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

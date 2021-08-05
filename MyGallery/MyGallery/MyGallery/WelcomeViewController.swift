@@ -10,20 +10,21 @@ import UIKit
 class WelcomeViewController: UIViewController {
 
     var viewControllerIndex = Int()
-    unowned var pageVC: PageViewController?
-    
+
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var button: UIButton!
     
     @IBAction func buttonAction(_ sender: UIButton) {
         
+        guard let parentPageViewController = self.parent as? PageViewController else {return}
+        
         switch self {
-        case pageVC?.vcs.last:
-            pageVC?.dismiss(animated: true) {
+        case parentPageViewController.viewControllersArray.last:
+            parentPageViewController.dismiss(animated: true) {
                 UserChecker.shared.setIsNotNewUser()
             }
         default:
-            pageVC?.goToNextPage()
+            parentPageViewController.goToNextPage()
         }
     }
     
@@ -32,16 +33,18 @@ class WelcomeViewController: UIViewController {
 
         button.layer.cornerRadius = button.bounds.height / 2
         
+        guard let vc = self.parent as? PageViewController else {return}
+
         switch self {
-        case pageVC?.vcs[0]:
-            textView.text = "Welcome!"
-            button.setTitle("Next", for: .normal)
-        case pageVC?.vcs[1]:
-            textView.text = "This is a test app for view your photo gallery"
-            button.setTitle("Next", for: .normal)
-        case pageVC?.vcs[2]:
-            textView.text = "GO!"
-            button.setTitle("Start", for: .normal)
+        case vc.viewControllersArray[0]:
+            textView.text = NSLocalizedString("1st_welcome_screen_label_text", comment: "")
+            button.setTitle(NSLocalizedString("1st_welcome_screen_button_text", comment: ""), for: .normal)
+        case vc.viewControllersArray[1]:
+            textView.text = NSLocalizedString("2nd_welcome_screen_label_text", comment: "")
+            button.setTitle(NSLocalizedString("2nd_welcome_screen_button_text", comment: ""), for: .normal)
+        case vc.viewControllersArray[2]:
+            textView.text = NSLocalizedString("3rd_welcome_screen_label_text", comment: "")
+            button.setTitle(NSLocalizedString("3rd_welcome_screen_button_text", comment: ""), for: .normal)
         default:
             return
         }

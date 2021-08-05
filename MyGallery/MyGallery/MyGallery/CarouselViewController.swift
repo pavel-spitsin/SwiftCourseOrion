@@ -28,7 +28,7 @@ class CarouselViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as! CarouselCollectionViewCell
         
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             let image = PhotoManager.shared().mediumQualityImage(index: indexPath.row)
             
             DispatchQueue.main.async {

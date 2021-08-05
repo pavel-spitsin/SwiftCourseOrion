@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  MyGallery
+
+  Created by Павел on 05.08.2021.
+  
+*/
+
+// Permission text
+NSPhotoLibraryUsageDescription = "This app lets you browse your photos";
+"permission_text" = "This app lets you browse your photos";
