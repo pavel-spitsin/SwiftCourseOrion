@@ -11,6 +11,7 @@ class ScrollViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     var itemsForShare = [UIImage]()
     var cellIndexPath = IndexPath()
+    let photoManager = PhotoManager()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -21,37 +22,41 @@ class ScrollViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //Scroll to item with index
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        photoManager.fetchingResult()
+    }
+    
+    override func viewDidLayoutSubviews() {
         collectionView.isPagingEnabled = false
         collectionView.performBatchUpdates(nil) { (result) in
             self.collectionView.scrollToItem(at: self.cellIndexPath, at: .centeredHorizontally, animated: false)
             self.collectionView.isPagingEnabled = true
         }
+        
+        collectionView.layoutIfNeeded()
+    }
+    
+    //Update cellIndexPath
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        cellIndexPath = collectionView.indexPathsForVisibleItems[0]
     }
     
     
     //MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PhotoManager.shared().fetchResultCount()
+        return photoManager.fetchResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SCVCell", for: indexPath) as! ZoomCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ZoomCell", for: indexPath) as! ZoomCell
         
         itemsForShare.removeAll()
 
-        DispatchQueue.global(qos: .userInteractive).sync {
-            let image = PhotoManager.shared().highQualityImage(index: indexPath.row)
-            self.itemsForShare.append(image)
-            
-            DispatchQueue.main.async {
-                cell.imageView.image = image
-            }
-        }
-        
-        
+        cell.imageView.image = photoManager.fetchImageWithIndexAndQuality(index: indexPath.row, quality: .high)
+        itemsForShare.append(cell.imageView.image!)
 
         cell.scrollview.contentInsetAdjustmentBehavior = .never
         

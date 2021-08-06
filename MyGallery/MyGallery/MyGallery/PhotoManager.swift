@@ -9,19 +9,15 @@ import Foundation
 import UIKit
 import Photos
 
+enum ImageQuality {
+    case low
+    case medium
+    case high
+}
+
 class PhotoManager {
     
-    var imagesArray = [UIImage]()
-    
-    //Singleton
-    private static var sharedManager: PhotoManager?
-    private init() {}
-    static func shared() -> PhotoManager {
-            if sharedManager == nil {
-                sharedManager = PhotoManager()
-            }
-            return sharedManager!
-        }
+    var fetchResult = PHFetchResult<PHAsset>()
     
     //To check permissions
     func checkPermissions() {
@@ -43,7 +39,6 @@ class PhotoManager {
             }
     }
     
-    
     //Options for request
     func prepareOptionsForRequest() -> PHImageRequestOptions {
         let requestOption = PHImageRequestOptions()
@@ -59,70 +54,36 @@ class PhotoManager {
         return fetchOptions
     }
     
-    //Fetching images count
-    func fetchResultCount() -> Int {
-        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: prepareOptionsForFetch())
-        return fetchResult.count
+    //Fetching result
+    func fetchingResult() {
+        fetchResult = PHAsset.fetchAssets(with: .image, options: prepareOptionsForFetch())
     }
     
+    //Return image quality
+    func imageQuality(quality: ImageQuality) -> CGSize {
+        switch quality {
+        case .low:
+            return CGSize(width: 320, height: 240)
+        case .medium:
+            return CGSize(width: 640, height: 480)
+        case .high:
+            return CGSize(width: 1920, height: 1080)
+        }
+    }
     
-    func lowQualityImage(index: Int) -> UIImage {
+    //Fetch image with index and quality
+    func fetchImageWithIndexAndQuality(index: Int, quality: ImageQuality) -> UIImage {
         let imgManager = PHImageManager.default()
         var imageForReturn = UIImage()
-        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: prepareOptionsForFetch())
         imgManager.requestImage(for: fetchResult.object(at: index),
-                                targetSize: CGSize(width: 200, height: 200),
+                                targetSize: imageQuality(quality: quality),
                                 contentMode: .aspectFill,
                                 options: prepareOptionsForRequest()) { image, error in
-            
             imageForReturn = image!
-                    
         }
         return imageForReturn
-    }
-    
-    func mediumQualityImage(index: Int) -> UIImage {
-        let imgManager = PHImageManager.default()
-        var imageForReturn = UIImage()
-        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: prepareOptionsForFetch())
-        imgManager.requestImage(for: fetchResult.object(at: index),
-                                targetSize: CGSize(width: 600, height: 600),
-                                contentMode: .aspectFill,
-                                options: prepareOptionsForRequest()) { image, error in
-            
-            imageForReturn = image!
-                    
-        }
-        return imageForReturn
-    }
-    
-    func highQualityImage(index: Int) -> UIImage {
-        let imgManager = PHImageManager.default()
-        var imageForReturn = UIImage()
-        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: prepareOptionsForFetch())
-        imgManager.requestImage(for: fetchResult.object(at: index),
-                                targetSize: CGSize(width: 1920, height: 1080),
-                                contentMode: .aspectFill,
-                                options: prepareOptionsForRequest()) { image, error in
-            
-            imageForReturn = image!
-                    
-        }
-        return imageForReturn
-    }
-    
-    func fillImagesArray() {
-        let imgManager = PHImageManager.default()
-        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: prepareOptionsForFetch())
-        
-        for i in 0..<fetchResult.count {
-            imgManager.requestImage(for: fetchResult.object(at: i),
-                                    targetSize: CGSize(width: 200, height: 200),
-                                    contentMode: .aspectFill,
-                                    options: prepareOptionsForRequest()) { image, error in
-                self.imagesArray.append(image!)
-            }
-        }
     }
 }
+
+
 

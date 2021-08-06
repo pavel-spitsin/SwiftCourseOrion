@@ -94,7 +94,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SCVCell" id="pLB-sD-sCd" customClass="ZoomCell" customModule="MyGallery" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ZoomCell" id="pLB-sD-sCd" customClass="ZoomCell" customModule="MyGallery" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bOx-Pz-tIc">
@@ -109,12 +109,12 @@
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="0Zp-I0-b4f" firstAttribute="height" secondItem="S7O-rj-VT7" secondAttribute="height" id="0H7-ku-gyJ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="0Zp-I0-b4f" secondAttribute="trailing" id="RxI-5a-aKs"/>
-                                                        <constraint firstItem="0Zp-I0-b4f" firstAttribute="top" secondItem="S7O-rj-VT7" secondAttribute="top" id="bMX-En-cqX"/>
-                                                        <constraint firstAttribute="bottom" secondItem="0Zp-I0-b4f" secondAttribute="bottom" id="c2T-J5-Wkc"/>
-                                                        <constraint firstItem="0Zp-I0-b4f" firstAttribute="leading" secondItem="S7O-rj-VT7" secondAttribute="leading" id="cqr-yn-IGi"/>
-                                                        <constraint firstItem="0Zp-I0-b4f" firstAttribute="width" secondItem="S7O-rj-VT7" secondAttribute="width" id="goa-sD-rIS"/>
+                                                        <constraint firstItem="0Zp-I0-b4f" firstAttribute="width" secondItem="S7O-rj-VT7" secondAttribute="width" id="5U7-A9-TvA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="0Zp-I0-b4f" secondAttribute="bottom" id="Dm4-NX-flg"/>
+                                                        <constraint firstItem="0Zp-I0-b4f" firstAttribute="height" secondItem="S7O-rj-VT7" secondAttribute="height" id="O2R-Ge-fQ6"/>
+                                                        <constraint firstItem="0Zp-I0-b4f" firstAttribute="leading" secondItem="S7O-rj-VT7" secondAttribute="leading" id="ORg-hF-Z8K"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0Zp-I0-b4f" secondAttribute="trailing" id="TDg-Ws-n7Z"/>
+                                                        <constraint firstItem="0Zp-I0-b4f" firstAttribute="top" secondItem="S7O-rj-VT7" secondAttribute="top" id="olu-FQ-XqC"/>
                                                     </constraints>
                                                     <viewLayoutGuide key="contentLayoutGuide" id="EGZ-nM-sVL"/>
                                                     <viewLayoutGuide key="frameLayoutGuide" id="dnd-f2-vLX"/>
