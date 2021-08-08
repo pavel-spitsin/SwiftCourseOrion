@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8oT-M7-PX9">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8oT-M7-PX9">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JJm-Us-Sc7">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JJm-Us-Sc7">
                                     <size key="itemSize" width="300" height="600"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -288,6 +288,7 @@
                                 <rect key="frame" x="20" y="742" width="374" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="374" id="Kab-l7-Hhe"/>
                                     <constraint firstAttribute="height" constant="80" id="bC8-Nk-2Di"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
@@ -313,8 +314,9 @@
                             <constraint firstItem="35S-k6-de9" firstAttribute="trailing" secondItem="LE5-eV-onD" secondAttribute="trailing" constant="10" id="MxR-HC-a2F"/>
                             <constraint firstItem="1SN-dG-s9N" firstAttribute="top" secondItem="LE5-eV-onD" secondAttribute="bottom" constant="60" id="P0n-Ql-0hc"/>
                             <constraint firstItem="LE5-eV-onD" firstAttribute="top" secondItem="35S-k6-de9" secondAttribute="top" constant="60" id="bjj-6R-imW"/>
-                            <constraint firstItem="1SN-dG-s9N" firstAttribute="leading" secondItem="35S-k6-de9" secondAttribute="leading" constant="20" id="tcC-85-VbO"/>
-                            <constraint firstItem="35S-k6-de9" firstAttribute="trailing" secondItem="1SN-dG-s9N" secondAttribute="trailing" constant="20" id="tuf-6H-FSl"/>
+                            <constraint firstItem="1SN-dG-s9N" firstAttribute="centerX" secondItem="35S-k6-de9" secondAttribute="centerX" id="jI7-T7-moV"/>
+                            <constraint firstItem="1SN-dG-s9N" firstAttribute="leading" secondItem="35S-k6-de9" secondAttribute="leading" priority="750" constant="20" id="tcC-85-VbO"/>
+                            <constraint firstItem="35S-k6-de9" firstAttribute="trailing" secondItem="1SN-dG-s9N" secondAttribute="trailing" priority="750" constant="20" id="tuf-6H-FSl"/>
                             <constraint firstItem="LE5-eV-onD" firstAttribute="leading" secondItem="35S-k6-de9" secondAttribute="leading" constant="10" id="xsQ-b6-aKe"/>
                         </constraints>
                     </view>

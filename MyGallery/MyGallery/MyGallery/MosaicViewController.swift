@@ -10,6 +10,7 @@ import UIKit
 class MosaicViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let photoManager = PhotoManager()
+    var indexPathForFocus = IndexPath()
     
     @IBOutlet weak var mosaicCollectionView: UICollectionView!
     
@@ -48,7 +49,16 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     //To set 3 cells per row
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = mosaicCollectionView.bounds.width / 3 - 1
+        
+        var width = CGFloat()
+        
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            width = mosaicCollectionView.bounds.width / 6 - 1
+        default:
+            width = mosaicCollectionView.bounds.width / 3 - 1
+        }
+        
         return CGSize(width: width, height: width)
     }
     
@@ -64,7 +74,7 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
     //MARK: - UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "iPhone", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let scrollViewController = storyboard.instantiateViewController(withIdentifier: "ScrollViewController") as! ScrollViewController
         scrollViewController.cellIndexPath = indexPath
         self.navigationController?.pushViewController(scrollViewController, animated: true)

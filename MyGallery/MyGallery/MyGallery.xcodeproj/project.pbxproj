@@ -18,8 +18,7 @@
 		FB1B90CF26B3DF9B0054497C /* MosaicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90CE26B3DF9B0054497C /* MosaicViewController.swift */; };
 		FB1B90D426B3DF9C0054497C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB1B90D326B3DF9C0054497C /* Assets.xcassets */; };
 		FB1B90D726B3DF9C0054497C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1B90D526B3DF9C0054497C /* LaunchScreen.storyboard */; };
-		FB1B90DF26B3E0670054497C /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1B90DE26B3E0670054497C /* iPhone.storyboard */; };
-		FB1B90E126B3E0800054497C /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1B90E026B3E0800054497C /* iPad.storyboard */; };
+		FB1B90DF26B3E0670054497C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1B90DE26B3E0670054497C /* Main.storyboard */; };
 		FB1B90E326B3E7C00054497C /* MosaicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90E226B3E7C00054497C /* MosaicCollectionViewCell.swift */; };
 		FB1B90E526B3F6480054497C /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90E426B3F6480054497C /* CarouselViewController.swift */; };
 		FB1B90E726B40B8A0054497C /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B90E626B40B8A0054497C /* ScrollViewController.swift */; };
@@ -44,8 +43,7 @@
 		FB1B90CE26B3DF9B0054497C /* MosaicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicViewController.swift; sourceTree = "<group>"; };
 		FB1B90D326B3DF9C0054497C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB1B90D626B3DF9C0054497C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FB1B90DE26B3E0670054497C /* iPhone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
-		FB1B90E026B3E0800054497C /* iPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
+		FB1B90DE26B3E0670054497C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FB1B90E226B3E7C00054497C /* MosaicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB1B90E426B3F6480054497C /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		FB1B90E626B40B8A0054497C /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
@@ -95,8 +93,7 @@
 				FB135BEE26BAB3A8002E5F68 /* PageViewController.swift */,
 				FB135BF026BAB714002E5F68 /* WelcomeViewController.swift */,
 				FB135BEC26BAB28B002E5F68 /* UserChecker.swift */,
-				FB1B90DE26B3E0670054497C /* iPhone.storyboard */,
-				FB1B90E026B3E0800054497C /* iPad.storyboard */,
+				FB1B90DE26B3E0670054497C /* Main.storyboard */,
 				E94C979826BC42C40034166B /* Localizable.strings */,
 				E94C97AB26BC4F180034166B /* Info.plist */,
 				E94C97A726BC4E4B0034166B /* InfoPlist.strings */,
@@ -166,9 +163,8 @@
 			files = (
 				E94C979626BC42C40034166B /* Localizable.strings in Resources */,
 				E94C97A526BC4E4B0034166B /* InfoPlist.strings in Resources */,
-				FB1B90E126B3E0800054497C /* iPad.storyboard in Resources */,
 				FB1B90D726B3DF9C0054497C /* LaunchScreen.storyboard in Resources */,
-				FB1B90DF26B3E0670054497C /* iPhone.storyboard in Resources */,
+				FB1B90DF26B3E0670054497C /* Main.storyboard in Resources */,
 				FB1B90D426B3DF9C0054497C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

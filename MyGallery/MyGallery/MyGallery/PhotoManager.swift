@@ -25,10 +25,7 @@ class PhotoManager {
                 switch status {
                 case .authorized:
                     print("You Are Authrized To Access")
-                    
                     NotificationCenter.default.post(name: NSNotification.Name("reloadMosaicData"), object: nil, userInfo: nil)
-                    NotificationCenter.default.post(name: NSNotification.Name("reloadCarouselData"), object: nil, userInfo: nil)
-
                 case .denied, .restricted:
                     print("Not allowed")
                 case .notDetermined:

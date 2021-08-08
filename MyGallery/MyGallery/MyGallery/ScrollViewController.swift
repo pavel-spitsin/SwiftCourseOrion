@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ScrollViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+class ScrollViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     var itemsForShare = [UIImage]()
     var cellIndexPath = IndexPath()
     let photoManager = PhotoManager()
@@ -34,8 +34,6 @@ class ScrollViewController: UIViewController, UICollectionViewDataSource, UIColl
             self.collectionView.scrollToItem(at: self.cellIndexPath, at: .centeredHorizontally, animated: false)
             self.collectionView.isPagingEnabled = true
         }
-        
-        collectionView.layoutIfNeeded()
     }
     
     //Update cellIndexPath
@@ -67,7 +65,7 @@ class ScrollViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         return cell
     }
-    
+
     
     //MARK: - UICollectionViewDelegateFlowLayout
     
