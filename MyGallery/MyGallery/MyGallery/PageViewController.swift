@@ -84,7 +84,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         guard orderedViewControllersCount > nextIndex else { return nil }
         return viewControllersArray[nextIndex]
     }
-
 }
 
 extension UIPageViewController {
@@ -96,4 +95,3 @@ extension UIPageViewController {
         }
     }
 }
-

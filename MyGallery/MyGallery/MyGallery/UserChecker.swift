@@ -18,5 +18,4 @@ class UserChecker {
     func setIsNotNewUser() {
         UserDefaults.standard.set(true, forKey: "isNewUser")
     }
-    
 }

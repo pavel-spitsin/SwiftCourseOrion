@@ -10,35 +10,41 @@ import UIKit
 class ScrollViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var itemsForShare = [UIImage]()
-    var cellIndexPath = IndexPath()
+    var focusedCellIndexPath = IndexPath()
     let photoManager = PhotoManager()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBAction func shareBarButtonAction(_ sender: UIBarButtonItem) {
         let shareController = UIActivityViewController(activityItems: itemsForShare, applicationActivities: nil)
-        present(shareController, animated: true, completion: nil)
+        
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            shareController.popoverPresentationController?.barButtonItem = sender
+            shareController.popoverPresentationController?.permittedArrowDirections = .any
+            present(shareController, animated: true, completion: nil)
+        default:
+            present(shareController, animated: true, completion: nil)
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         photoManager.fetchingResult()
     }
     
     override func viewDidLayoutSubviews() {
-        collectionView.isPagingEnabled = false
-        collectionView.performBatchUpdates(nil) { (result) in
-            self.collectionView.scrollToItem(at: self.cellIndexPath, at: .centeredHorizontally, animated: false)
-            self.collectionView.isPagingEnabled = true
-        }
+        scrollToItem()
     }
     
     //Update cellIndexPath
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        cellIndexPath = collectionView.indexPathsForVisibleItems[0]
+        focusedCellIndexPath = collectionView.indexPathsForVisibleItems[0]
     }
     
     
@@ -52,7 +58,7 @@ class ScrollViewController: UIViewController, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ZoomCell", for: indexPath) as! ZoomCell
         
         itemsForShare.removeAll()
-
+        
         cell.imageView.image = photoManager.fetchImageWithIndexAndQuality(index: indexPath.row, quality: .high)
         itemsForShare.append(cell.imageView.image!)
 
@@ -83,5 +89,20 @@ class ScrollViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    
+    //MARK: - Functions
+    
+    @objc func willResignActive(_ notification: Notification) {
+        scrollToItem()
+    }
+    
+    func scrollToItem() {
+        collectionView.isPagingEnabled = false
+        collectionView.performBatchUpdates(nil) { (result) in
+            self.collectionView.scrollToItem(at: self.focusedCellIndexPath, at: .centeredHorizontally, animated: false)
+            self.collectionView.isPagingEnabled = true
+        }
     }
 }

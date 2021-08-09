@@ -11,7 +11,7 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = NSLocalizedString("navigationBar_title_text", comment: "")
     }
 }

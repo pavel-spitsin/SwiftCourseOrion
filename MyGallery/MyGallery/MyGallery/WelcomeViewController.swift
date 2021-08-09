@@ -32,5 +32,4 @@ class WelcomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         delegate?.textAndButtonTitle(for: self)
     }
-    
 }

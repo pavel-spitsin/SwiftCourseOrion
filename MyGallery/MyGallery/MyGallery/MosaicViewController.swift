@@ -22,7 +22,6 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
             welcomeVC.modalPresentationStyle = .fullScreen
             present(welcomeVC, animated: true, completion: nil)
         }
-
         NotificationCenter.default.addObserver(self, selector: #selector(reloadMosaicCollectionView), name: .reloadMosaicData, object: nil)
         photoManager.checkPermissions()
     }
@@ -58,7 +57,6 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
         default:
             width = mosaicCollectionView.bounds.width / 3 - 1
         }
-        
         return CGSize(width: width, height: width)
     }
     
@@ -76,7 +74,7 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let scrollViewController = storyboard.instantiateViewController(withIdentifier: "ScrollViewController") as! ScrollViewController
-        scrollViewController.cellIndexPath = indexPath
+        scrollViewController.focusedCellIndexPath = indexPath
         self.navigationController?.pushViewController(scrollViewController, animated: true)
     }
 
@@ -97,4 +95,3 @@ class MosaicViewController: UIViewController, UICollectionViewDataSource, UIColl
 extension Notification.Name {
     static let reloadMosaicData = NSNotification.Name("reloadMosaicData")
 }
-

@@ -12,15 +12,7 @@ class MosaicCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     override func layoutSubviews() {
-        
         imageView.frame = self.bounds
-        
         super.layoutSubviews()
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-    
-    
 }

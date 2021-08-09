@@ -8,6 +8,7 @@
 import UIKit
 
 class ZoomCell: UICollectionViewCell, UIScrollViewDelegate {
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollview: UIScrollView!
 

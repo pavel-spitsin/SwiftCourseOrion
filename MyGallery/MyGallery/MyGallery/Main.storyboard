@@ -18,18 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8oT-M7-PX9">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8oT-M7-PX9">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JJm-Us-Sc7">
-                                    <size key="itemSize" width="300" height="600"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="20" id="JJm-Us-Sc7">
+                                    <size key="itemSize" width="200" height="400"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CarouselCollectionViewCell" id="sfm-OI-sBE" customClass="CarouselCollectionViewCell" customModule="MyGallery" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="286" height="353"/>
+                                        <rect key="frame" x="0.0" y="186" width="286" height="353"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="waK-yt-v36">
                                             <rect key="frame" x="0.0" y="0.0" width="286" height="353"/>
@@ -198,7 +198,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.3411764706" green="0.85490196080000003" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="96" height="102"/>
@@ -285,10 +285,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1SN-dG-s9N">
-                                <rect key="frame" x="20" y="742" width="374" height="80"/>
+                                <rect key="frame" x="107" y="742" width="200" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="374" id="Kab-l7-Hhe"/>
+                                    <constraint firstAttribute="width" constant="200" id="8VK-Zs-lYf"/>
                                     <constraint firstAttribute="height" constant="80" id="bC8-Nk-2Di"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
@@ -315,8 +315,6 @@
                             <constraint firstItem="1SN-dG-s9N" firstAttribute="top" secondItem="LE5-eV-onD" secondAttribute="bottom" constant="60" id="P0n-Ql-0hc"/>
                             <constraint firstItem="LE5-eV-onD" firstAttribute="top" secondItem="35S-k6-de9" secondAttribute="top" constant="60" id="bjj-6R-imW"/>
                             <constraint firstItem="1SN-dG-s9N" firstAttribute="centerX" secondItem="35S-k6-de9" secondAttribute="centerX" id="jI7-T7-moV"/>
-                            <constraint firstItem="1SN-dG-s9N" firstAttribute="leading" secondItem="35S-k6-de9" secondAttribute="leading" priority="750" constant="20" id="tcC-85-VbO"/>
-                            <constraint firstItem="35S-k6-de9" firstAttribute="trailing" secondItem="1SN-dG-s9N" secondAttribute="trailing" priority="750" constant="20" id="tuf-6H-FSl"/>
                             <constraint firstItem="LE5-eV-onD" firstAttribute="leading" secondItem="35S-k6-de9" secondAttribute="leading" constant="10" id="xsQ-b6-aKe"/>
                         </constraints>
                     </view>
