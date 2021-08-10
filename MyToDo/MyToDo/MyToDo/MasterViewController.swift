@@ -2,44 +2,61 @@
 //  MasterViewController.swift
 //  MyToDo
 //
-//  Created by Pavel Spitcyn on 09.08.2021.
+//  Created by Павел on 10.08.2021.
 //
 
 import UIKit
 
-class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MasterCellDelegate {
+protocol TaskListSelectionDelegate: AnyObject {
+    func taskListSelected(_ newTaskList: TaskList)
+}
 
-    var numderOfRows: Int = 10
+class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    weak var delegate: TaskListSelectionDelegate?
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addTaskButton: UIButton!
+    @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
     
-    @IBAction func addTaskAction(_ sender: UIButton) {
+    @IBAction func addBarButtonAction(_ sender: UIBarButtonItem) {
         
+        let alert = UIAlertController(title: "New tasklist", message: "Enter tasklist name", preferredStyle: .alert)
+        alert.addTextField()
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            
+            let newTaskList = TaskList()
+            TaskManager.shared().taskListArray.append(newTaskList)
+            
+            switch alert.textFields?[0].text {
+            case "":
+                newTaskList.name = "New TaskList" + String(TaskManager.shared().taskListArray.count)
+            default:
+                newTaskList.name = (alert.textFields?[0].text)!
+            }
+            self.tableView.reloadData()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
+    //MARK: - UIViewControllerLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTaskButton.layer.cornerRadius = addTaskButton.bounds.height / 2
-        addTaskButton.layer.shadowColor = UIColor.black.cgColor
-        addTaskButton.layer.shadowOpacity = 0.8
-        addTaskButton.layer.shadowOffset = CGSize(width: 0, height: 5)
-        addTaskButton.layer.shadowRadius = 10
     }
-    
-    
-    //MARK: - UITableViewDataSource
 
+    //MARK: - UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numderOfRows
+        return TaskManager.shared().taskListArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MasterCell", for: indexPath) as! MasterCell
-        cell.delegate = self
-        cell.indexPath = indexPath
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MasterCell", for: indexPath)
+        cell.textLabel?.text = TaskManager.shared().taskListArray[indexPath.row].name
         return cell
     }
     
@@ -50,35 +67,23 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            numderOfRows -= 1
+            TaskManager.shared().taskListArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
         }
     }
     
-    //MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+    // MARK: - UITableViewDelegate
     
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedTaskList = TaskManager.shared().taskListArray[indexPath.row]
+        delegate?.taskListSelected(selectedTaskList)
 
-    //MARK: - MasterCellDelegate
-    
-    func textChanged() {
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        if let detailViewController = delegate as? DetailViewController,
+           let detailNavigationController = detailViewController.navigationController {
+            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
+        }
     }
-    
-    func deleteEmptyRow(at indexPath: IndexPath) {
-        numderOfRows -= 1
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-    }
-    
-    
-    //MARK: - Actions
-    
-    
 }
