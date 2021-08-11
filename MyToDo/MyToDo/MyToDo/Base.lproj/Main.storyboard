@@ -191,7 +191,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TyG-cx-jmh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="rcR-jN-24U" secondAttribute="bottom" id="06Q-28-pjS"/>
                             <constraint firstItem="rcR-jN-24U" firstAttribute="trailing" secondItem="TyG-cx-jmh" secondAttribute="trailing" id="JtZ-i2-MRa"/>
@@ -208,6 +208,7 @@
                     <connections>
                         <outlet property="addTaskButton" destination="7bq-Yn-Bxi" id="EbN-zo-DmX"/>
                         <outlet property="tableView" destination="rcR-jN-24U" id="V7a-28-FBA"/>
+                        <outlet property="tableViewBottomConstraint" destination="06Q-28-pjS" id="6ZD-av-lhu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Puj-Vv-xFa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -244,6 +245,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

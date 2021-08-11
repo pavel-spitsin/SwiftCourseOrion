@@ -18,6 +18,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     @IBAction func addTaskAction(_ sender: UIButton) {
         
@@ -27,14 +28,21 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)], with: .automatic)
         tableView.endUpdates()
-        tableView.scrollToRow(at: IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0), at: .bottom, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.tableView.scrollToRow(at: IndexPath(row: (self.taskList?.taskArray.count)! - 1, section: 0), at: .bottom, animated: true)
+        }
         
         guard let lastCell = tableView.cellForRow(at: IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)) as? DetailCell else { fatalError() }
         lastCell.textView.becomeFirstResponder()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         addTaskButton.layer.cornerRadius = addTaskButton.bounds.height / 2
         addTaskButton.layer.shadowColor = UIColor.black.cgColor
@@ -42,7 +50,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         addTaskButton.layer.shadowOffset = CGSize(width: 0, height: 5)
         addTaskButton.layer.shadowRadius = 10
     }
-    
+
     
     //MARK: - UITableViewDataSource
 
@@ -98,6 +106,36 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func taskListSelected(_ newTaskList: TaskList) {
         taskList = newTaskList
+        navigationItem.title = taskList?.name
         tableView.reloadData()
+    }
+    
+    
+    //MARK: - Functions
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+
+            let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
+            
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: duration as! TimeInterval) {
+                    self.tableViewBottomConstraint.constant = keyboardSize.size.height
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
+
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: duration as! TimeInterval) {
+                self.tableViewBottomConstraint.constant = 0
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }

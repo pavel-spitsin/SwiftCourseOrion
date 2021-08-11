@@ -11,7 +11,7 @@ protocol TaskListSelectionDelegate: AnyObject {
     func taskListSelected(_ newTaskList: TaskList)
 }
 
-class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISplitViewControllerDelegate {
 
     weak var delegate: TaskListSelectionDelegate?
     
@@ -26,6 +26,10 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //MARK: - UIViewControllerLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+        return false
     }
 
     
@@ -97,4 +101,5 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
     }
+    
 }
