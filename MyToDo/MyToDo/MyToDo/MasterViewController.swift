@@ -19,35 +19,16 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
     
     @IBAction func addBarButtonAction(_ sender: UIBarButtonItem) {
-        
-        let alert = UIAlertController(title: "New tasklist", message: "Enter tasklist name", preferredStyle: .alert)
-        alert.addTextField()
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            
-            let newTaskList = TaskList()
-            TaskManager.shared().taskListArray.append(newTaskList)
-            
-            switch alert.textFields?[0].text {
-            case "":
-                newTaskList.name = "New TaskList" + String(TaskManager.shared().taskListArray.count)
-            default:
-                newTaskList.name = (alert.textFields?[0].text)!
-            }
-            self.tableView.reloadData()
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        self.present(alert, animated: true, completion: nil)
+        createAlertController()
     }
+    
     
     //MARK: - UIViewControllerLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
+    
     //MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,8 +58,38 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        loadDetailViewControllerForTaskList(taskList: TaskManager.shared().taskListArray[indexPath.row])
+    }
+    
+    
+    // MARK: - Functions
+    
+    func createAlertController() {
+        let alert = UIAlertController(title: "New tasklist", message: "Enter tasklist name", preferredStyle: .alert)
+        alert.addTextField()
         
-        let selectedTaskList = TaskManager.shared().taskListArray[indexPath.row]
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            
+            let newTaskList = TaskList()
+            TaskManager.shared().taskListArray.append(newTaskList)
+            
+            switch alert.textFields?[0].text {
+            case "":
+                newTaskList.name = "New TaskList" + String(TaskManager.shared().taskListArray.count)
+            default:
+                newTaskList.name = (alert.textFields?[0].text)!
+            }
+            self.tableView.reloadData()
+            self.loadDetailViewControllerForTaskList(taskList: newTaskList)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func loadDetailViewControllerForTaskList(taskList: TaskList) {
+        let selectedTaskList = taskList
         delegate?.taskListSelected(selectedTaskList)
 
         if let detailViewController = delegate as? DetailViewController,

@@ -28,6 +28,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.insertRows(at: [IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)], with: .automatic)
         tableView.endUpdates()
         tableView.scrollToRow(at: IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0), at: .bottom, animated: true)
+        
+        guard let lastCell = tableView.cellForRow(at: IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)) as? DetailCell else { fatalError() }
+        lastCell.textView.becomeFirstResponder()
     }
     
     override func viewDidLoad() {
@@ -78,9 +81,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 
     //MARK: - DetailCellDelegate
-    
-    func textChanged() {
+
+    func textChangedInCell(cell: DetailCell) {
         tableView.beginUpdates()
+        taskList?.taskArray[cell.indexPath.row].task = cell.textView.text
         tableView.endUpdates()
     }
     
@@ -91,7 +95,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     //MARK: - TaskListSelectionDelegate
+    
     func taskListSelected(_ newTaskList: TaskList) {
         taskList = newTaskList
+        tableView.reloadData()
     }
 }

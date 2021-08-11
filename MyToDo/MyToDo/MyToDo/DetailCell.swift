@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailCellDelegate: AnyObject {
-    func textChanged()
+    func textChangedInCell(cell: DetailCell)
     func deleteRow(at rowIndex: Int)
 }
 
@@ -35,10 +35,8 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
         circleView.layer.cornerRadius = circleView.bounds.height / 2
         circleView.backgroundColor = UIColor(cgColor: checkmarkButton.layer.borderColor!)
         checkmarkButton.addSubview(circleView)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.delegate?.deleteRow(at: self.indexPath.row)
-        }
+        
+        textView.textColor = UIColor.lightGray
     }
     
     @IBAction func detailButtonAction(_ sender: UIButton) {
@@ -72,7 +70,7 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        delegate?.textChanged()
+        delegate?.textChangedInCell(cell: self)
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
