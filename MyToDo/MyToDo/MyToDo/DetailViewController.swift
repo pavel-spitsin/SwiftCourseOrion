@@ -11,7 +11,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var taskList: TaskList? {
         didSet {
-            //refreshUI()
             reloadInputViews()
         }
     }
@@ -29,13 +28,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.insertRows(at: [IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)], with: .automatic)
         tableView.endUpdates()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.tableView.scrollToRow(at: IndexPath(row: (self.taskList?.taskArray.count)! - 1, section: 0), at: .bottom, animated: true)
         }
-        
+
         guard let lastCell = tableView.cellForRow(at: IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)) as? DetailCell else { fatalError() }
         lastCell.textView.becomeFirstResponder()
-        
     }
     
     override func viewDidLoad() {
@@ -49,13 +47,24 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         addTaskButton.layer.shadowOpacity = 0.8
         addTaskButton.layer.shadowOffset = CGSize(width: 0, height: 5)
         addTaskButton.layer.shadowRadius = 10
+        addTaskButton.isHidden = true
     }
 
     
     //MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList?.taskArray.count ?? 0
+        
+        var numberForFeturn = Int()
+        
+        switch TaskManager.shared().taskListArray.count {
+        case 0:
+            numberForFeturn = 0
+        default:
+            numberForFeturn = (taskList?.taskArray.count)!
+        }
+        
+        return numberForFeturn
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,6 +73,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.delegate = self
         cell.indexPath = indexPath
         cell.textView.text = String((taskList?.taskArray[indexPath.row].task)!)
+        
+        switch taskList?.taskArray[indexPath.row].isCompleted {
+        case true:
+            cell.isCheckmarkActive(active: true)
+        default:
+            cell.isCheckmarkActive(active: false)
+        }
+        
         return cell
     }
     
@@ -107,6 +124,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func taskListSelected(_ newTaskList: TaskList) {
         taskList = newTaskList
         navigationItem.title = taskList?.name
+        
+        guard tableView != nil else {return}
         tableView.reloadData()
     }
     

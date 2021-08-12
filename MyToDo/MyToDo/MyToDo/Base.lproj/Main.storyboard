@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MD5-5c-6FZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -89,7 +88,7 @@
         <!--Split View Controller-->
         <scene sceneID="GSH-uQ-2xC">
             <objects>
-                <splitViewController allowDoubleColumnStyle="YES" id="MD5-5c-6FZ" sceneMemberID="viewController">
+                <splitViewController allowDoubleColumnStyle="YES" id="MD5-5c-6FZ" customClass="SplitViewController" customModule="MyToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="TP0-GU-VOe" kind="relationship" relationship="masterViewController" id="vLb-v5-rfn"/>
                         <segue destination="xLp-Td-cta" kind="relationship" relationship="detailViewController" id="pyX-fV-aps"/>
@@ -117,7 +116,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-KB-3Rx">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-KB-3Rx">
                                                     <rect key="frame" x="10" y="10" width="26" height="26"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>

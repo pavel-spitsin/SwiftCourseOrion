@@ -25,18 +25,18 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
     
     @IBAction func checkmarkAction(_ sender: UIButton) {
 
-        checkmarkButton.layer.borderColor = UIColor.systemGreen.cgColor
-
-        let circleView = UIView()
-        circleView.frame.size = CGSize(width: checkmarkButton.frame.width - 8,
-                                       height: checkmarkButton.frame.height - 8)
-        circleView.center = CGPoint(x: checkmarkButton.frame.size.width  / 2,
-                                    y: checkmarkButton.frame.size.height / 2)
-        circleView.layer.cornerRadius = circleView.bounds.height / 2
-        circleView.backgroundColor = UIColor(cgColor: checkmarkButton.layer.borderColor!)
-        checkmarkButton.addSubview(circleView)
+        guard let vc = delegate as? DetailViewController else { return }
         
-        textView.textColor = UIColor.lightGray
+        switch vc.taskList?.taskArray[indexPath.row].isCompleted {
+        case true:
+            isCheckmarkActive(active: false)
+            vc.taskList?.taskArray[indexPath.row].isCompleted = false
+        default:
+            isCheckmarkActive(active: true)
+            vc.taskList?.taskArray[indexPath.row].isCompleted = true
+        }
+        
+        vc.tableView.reloadData()
     }
     
     @IBAction func detailButtonAction(_ sender: UIButton) {
@@ -96,4 +96,20 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
         return true
     }
     
+    
+    //MARK: - Functions
+    
+    func isCheckmarkActive(active: Bool) {
+        
+        switch active {
+        case true:
+            checkmarkButton.backgroundColor = UIColor.systemGreen
+            checkmarkButton.layer.borderColor = UIColor.systemGreen.cgColor
+            textView.textColor = UIColor.lightGray
+        case false:
+            checkmarkButton.backgroundColor = UIColor.clear
+            checkmarkButton.layer.borderColor = UIColor.lightGray.cgColor
+            textView.textColor = UIColor.black
+        }
+    }
 }

@@ -10,6 +10,7 @@
 		E94C97B026C2E8450034166B /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C97AF26C2E8450034166B /* MasterViewController.swift */; };
 		E94C97B226C2E8690034166B /* MasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C97B126C2E8690034166B /* MasterCell.swift */; };
 		E94C97B426C2EFE60034166B /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C97B326C2EFE60034166B /* TaskList.swift */; };
+		E94C97B626C465A80034166B /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C97B526C465A80034166B /* SplitViewController.swift */; };
 		FB0BA1D526C14442005CA96A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0BA1D426C14442005CA96A /* AppDelegate.swift */; };
 		FB0BA1D926C14442005CA96A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0BA1D826C14442005CA96A /* ViewController.swift */; };
 		FB0BA1DC26C14442005CA96A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0BA1DA26C14442005CA96A /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		E94C97AF26C2E8450034166B /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		E94C97B126C2E8690034166B /* MasterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCell.swift; sourceTree = "<group>"; };
 		E94C97B326C2EFE60034166B /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		E94C97B526C465A80034166B /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		FB0BA1D126C14442005CA96A /* MyToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB0BA1D426C14442005CA96A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB0BA1D826C14442005CA96A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				FB0BA1D426C14442005CA96A /* AppDelegate.swift */,
 				FB0BA1D826C14442005CA96A /* ViewController.swift */,
+				E94C97B526C465A80034166B /* SplitViewController.swift */,
 				FB0BA1E826C14B14005CA96A /* TaskManager.swift */,
 				E94C97B326C2EFE60034166B /* TaskList.swift */,
 				FB0BA1EA26C14D0C005CA96A /* Task.swift */,
@@ -160,6 +163,7 @@
 				FB2AEBEA26C155A60056498B /* DetailViewController.swift in Sources */,
 				E94C97B426C2EFE60034166B /* TaskList.swift in Sources */,
 				FB0BA1D926C14442005CA96A /* ViewController.swift in Sources */,
+				E94C97B626C465A80034166B /* SplitViewController.swift in Sources */,
 				FB0BA1D526C14442005CA96A /* AppDelegate.swift in Sources */,
 				E94C97B026C2E8450034166B /* MasterViewController.swift in Sources */,
 				FB2AEBE826C153960056498B /* DetailCell.swift in Sources */,
@@ -313,7 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VKVBX8RQ53;
 				INFOPLIST_FILE = MyToDo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,7 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VKVBX8RQ53;
 				INFOPLIST_FILE = MyToDo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

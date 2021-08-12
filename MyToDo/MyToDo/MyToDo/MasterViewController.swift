@@ -11,7 +11,7 @@ protocol TaskListSelectionDelegate: AnyObject {
     func taskListSelected(_ newTaskList: TaskList)
 }
 
-class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISplitViewControllerDelegate {
+class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     weak var delegate: TaskListSelectionDelegate?
     
@@ -26,10 +26,6 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //MARK: - UIViewControllerLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
-        return false
     }
 
     
@@ -55,6 +51,15 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             TaskManager.shared().taskListArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
+        }
+        
+
+        guard let detailViewController = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? DetailViewController else { return }
+        
+        if TaskManager.shared().taskListArray.last != nil {
+            loadDetailViewControllerForTaskList(taskList: TaskManager.shared().taskListArray.last!)
+        } else {
+            detailViewController.tableView.reloadData()
         }
     }
     
@@ -93,12 +98,15 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func loadDetailViewControllerForTaskList(taskList: TaskList) {
-        let selectedTaskList = taskList
-        delegate?.taskListSelected(selectedTaskList)
+        delegate?.taskListSelected(taskList)
 
         if let detailViewController = delegate as? DetailViewController,
            let detailNavigationController = detailViewController.navigationController {
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
+            
+            DispatchQueue.main.async {
+                detailViewController.addTaskButton.isHidden = false
+            }
         }
     }
     

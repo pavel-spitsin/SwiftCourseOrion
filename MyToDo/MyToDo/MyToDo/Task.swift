@@ -8,6 +8,6 @@
 import Foundation
 
 class Task {
-    var isCompleted = Bool()
+    var isCompleted: Bool = false
     var task = String()
 }
