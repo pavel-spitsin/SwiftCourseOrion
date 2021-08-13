@@ -28,14 +28,15 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.insertRows(at: [IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)], with: .automatic)
         tableView.endUpdates()
         
+        //CHECK!!!
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.tableView.scrollToRow(at: IndexPath(row: (self.taskList?.taskArray.count)! - 1, section: 0), at: .bottom, animated: true)
         }
-
+        
         guard let lastCell = tableView.cellForRow(at: IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)) as? DetailCell else { fatalError() }
         lastCell.textView.becomeFirstResponder()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

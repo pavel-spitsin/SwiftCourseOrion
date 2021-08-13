@@ -11,7 +11,10 @@ protocol TaskListSelectionDelegate: AnyObject {
     func taskListSelected(_ newTaskList: TaskList)
 }
 
-class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate, UITableViewDropDelegate {
+    
+    var startIndexPath = IndexPath()
+    var endIndexPath: IndexPath? = nil
 
     weak var delegate: TaskListSelectionDelegate?
     
@@ -26,6 +29,10 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //MARK: - UIViewControllerLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
     }
 
     
@@ -36,8 +43,9 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MasterCell", for: indexPath)
-        cell.textLabel?.text = TaskManager.shared().taskListArray[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MasterCell", for: indexPath) as! MasterCell
+        cell.nameLabel.text = TaskManager.shared().taskListArray[indexPath.row].name
+
         return cell
     }
     
@@ -68,6 +76,57 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         loadDetailViewControllerForTaskList(taskList: TaskManager.shared().taskListArray[indexPath.row])
+    }
+    
+    
+    // MARK: - UITableViewDragDelegate
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        startIndexPath = indexPath
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+    
+    
+    // MARK: - UITableViewDropDelegate
+    
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        
+        endIndexPath = destinationIndexPath
+        
+        if (destinationIndexPath != nil) {
+
+            clearIndicator()
+
+            let destinationCell = tableView.cellForRow(at: IndexPath(row: (destinationIndexPath?.row)!, section: 0)) as! MasterCell
+            
+            if startIndexPath.row > endIndexPath!.row {
+                destinationCell.addUpperIndicator()
+            } else {
+                destinationCell.addLowerIndicator()
+            }
+        }
+        
+        if session.localDragSession != nil { // Drag originated from the same app.
+            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+            
+        }
+            return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
+    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        let element = TaskManager.shared().taskListArray[startIndexPath.row]
+        TaskManager.shared().taskListArray.remove(at: startIndexPath.row)
+        
+        switch endIndexPath {
+        case nil:
+            TaskManager.shared().taskListArray.insert(element, at: TaskManager.shared().taskListArray.count)
+        default:
+            TaskManager.shared().taskListArray.insert(element, at: endIndexPath!.row)
+        }
+        
+        clearIndicator()
+        
+        tableView.reloadData()
     }
     
     
@@ -110,4 +169,12 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func clearIndicator() {
+        for cell in tableView.visibleCells {
+            if let masterCell = cell as? MasterCell {
+                masterCell.removeIndicator()
+            }
+        }
+    }
 }
+

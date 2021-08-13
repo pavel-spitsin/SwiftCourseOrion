@@ -9,14 +9,39 @@ import UIKit
 
 class MasterCell: UITableViewCell {
 
+    var indicatorLine: UIView?
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func addUpperIndicator() {
+        indicatorLine = UIView()
+        indicatorLine?.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: 2)
+        indicatorLine?.backgroundColor = UIColor.systemBlue
+        self.contentView.addSubview(indicatorLine!)
+    }
+    
+    func addLowerIndicator() {
+        indicatorLine = UIView()
+        indicatorLine?.frame = CGRect(x: 0, y: self.bounds.height, width: self.bounds.width, height: -2)
+        indicatorLine?.backgroundColor = UIColor.systemBlue
+        self.contentView.addSubview(indicatorLine!)
+    }
 
-        // Configure the view for the selected state
+    func removeIndicator() {
+        
+        guard indicatorLine != nil else {
+            return
+        }
+        indicatorLine?.removeFromSuperview()
     }
 }
