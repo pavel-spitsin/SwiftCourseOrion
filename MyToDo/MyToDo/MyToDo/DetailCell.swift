@@ -35,8 +35,6 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
             isCheckmarkActive(active: true)
             vc.taskList?.taskArray[indexPath.row].isCompleted = true
         }
-        
-        vc.tableView.reloadData()
     }
     
     @IBAction func detailButtonAction(_ sender: UIButton) {
@@ -44,10 +42,9 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         selectionStyle = .none
-        
+                
         textView.delegate = self
         
         checkmarkButton.layer.cornerRadius = checkmarkButton.bounds.height / 2
@@ -105,6 +102,8 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
         case true:
             checkmarkButton.backgroundColor = UIColor.systemGreen
             checkmarkButton.layer.borderColor = UIColor.systemGreen.cgColor
+            
+            checkmarkButton.setImage(UIImage.init(systemName: "checkmark"), for: .normal)
             textView.textColor = UIColor.lightGray
         case false:
             checkmarkButton.backgroundColor = UIColor.clear

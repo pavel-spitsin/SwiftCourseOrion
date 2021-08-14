@@ -7,7 +7,11 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailCellDelegate, TaskListSelectionDelegate {
+extension Notification.Name {
+    static let ScrollToLastCell = NSNotification.Name("ScrollToLastCell")
+}
+
+class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailCellDelegate, TaskListSelectionDelegate, UIScrollViewDelegate {
 
     var taskList: TaskList? {
         didSet {
@@ -15,31 +19,27 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    let ghostTextView = UITextView()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     @IBAction func addTaskAction(_ sender: UIButton) {
-        
         let newTask = Task()
         taskList?.taskArray.append(newTask)
-        
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)], with: .automatic)
         tableView.endUpdates()
-        
-        //CHECK!!!
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            self.tableView.scrollToRow(at: IndexPath(row: (self.taskList?.taskArray.count)! - 1, section: 0), at: .bottom, animated: true)
-        }
-        
-        guard let lastCell = tableView.cellForRow(at: IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)) as? DetailCell else { fatalError() }
-        lastCell.textView.becomeFirstResponder()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        ghostTextView.becomeFirstResponder()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.addSubview(ghostTextView)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -105,6 +105,13 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return UITableView.automaticDimension
     }
     
+    
+    //MARK: - UIScrollViewDelegate
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        NotificationCenter.default.post(name: Notification.Name.ScrollToLastCell, object: nil)
+    }
+    
 
     //MARK: - DetailCellDelegate
 
@@ -157,5 +164,30 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.view.layoutIfNeeded()
             }
         }
+    }
+    
+    @objc
+    func keyboardDidShow(notification: NSNotification) {
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        
+        let lastVisibleCell = self.tableView.visibleCells.last as! DetailCell
+        let lastRow: Int = (self.taskList?.taskArray.count)! - 1
+
+        if lastVisibleCell.indexPath.row < lastRow {
+            NotificationCenter.default.addObserver(self, selector: #selector(focusOnLastCellTextView), name: .ScrollToLastCell, object: nil)
+            
+            self.tableView.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: true)
+            
+        } else {
+            focusOnLastCellTextView()
+        }
+    }
+    
+    @objc
+    func focusOnLastCellTextView() {
+        let lastCell = tableView.cellForRow(at: IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)) as! DetailCell
+        lastCell.textView.becomeFirstResponder()
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollToLastCell, object: nil)
     }
 }

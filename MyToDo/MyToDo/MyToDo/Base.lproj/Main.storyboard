@@ -136,6 +136,7 @@
                                                         <constraint firstAttribute="height" constant="26" id="Jz9-Ad-0dM"/>
                                                         <constraint firstAttribute="width" constant="26" id="lr2-Nc-vAc"/>
                                                     </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
                                                         <action selector="checkmarkAction:" destination="xXA-ae-dvf" eventType="touchUpInside" id="YBA-Fb-cxx"/>
                                                     </connections>

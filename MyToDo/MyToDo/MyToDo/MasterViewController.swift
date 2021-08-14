@@ -129,6 +129,10 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, dropSessionDidExit session: UIDropSession) {
+        clearIndicator()
+    }
+    
     
     // MARK: - Functions
     
