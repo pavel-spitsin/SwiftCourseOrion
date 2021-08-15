@@ -61,7 +61,6 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.endUpdates()
         }
         
-
         guard let detailViewController = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? DetailViewController else { return }
         
         if TaskManager.shared().taskListArray.last != nil {

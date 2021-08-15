@@ -19,7 +19,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    var filteredTasks: [Task]? = nil
+    var filteredTasksArray: [Task]? = nil
 
     let ghostTextView = UITextView()
     
@@ -34,7 +34,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         taskList?.taskArray.append(newTask)
         
         if searchBar.text == "" {
-            filteredTasks = taskList!.taskArray
+            filteredTasksArray = taskList!.taskArray
         }
         
         tableView.beginUpdates()
@@ -49,7 +49,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         sortSegmentControl.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
         
-        filteredTasks = taskList?.taskArray
+        filteredTasksArray = taskList?.taskArray
         
         view.addSubview(ghostTextView)
         
@@ -75,7 +75,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case 0:
             numberForFeturn = 0
         default:
-            numberForFeturn = filteredTasks!.count
+            numberForFeturn = filteredTasksArray?.count ?? 0
         }
         
         return numberForFeturn
@@ -86,11 +86,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         cell.delegate = self
         
-        cell.textView.text = filteredTasks![indexPath.row].task
+        cell.textView.text = filteredTasksArray![indexPath.row].task
         
         cell.indexPath = indexPath
         
-        switch filteredTasks![indexPath.row].isCompleted {
+        switch filteredTasksArray![indexPath.row].isCompleted {
         case true:
             cell.isCheckmarkActive(active: true)
         default:
@@ -108,7 +108,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if editingStyle == .delete {
             tableView.beginUpdates()
             taskList?.taskArray.remove(at: indexPath.row)
-            filteredTasks?.remove(at: indexPath.row)
+            filteredTasksArray?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
         }
@@ -137,26 +137,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-        filteredTasks = []
-        
-        if searchText == "" {
-            filteredTasks = taskList?.taskArray
-        }
-        
-        for task in taskList!.taskArray {
-            if task.task.uppercased().contains(searchText.uppercased()) {
-                filteredTasks?.append(task)
-            }
-        }
-        
+        fillFilteredTaskArray(by: searchText)
         tableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = nil
-        filteredTasks = taskList?.taskArray
+        filteredTasksArray = taskList?.taskArray
         searchBar.resignFirstResponder()
     }
     
@@ -171,7 +159,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func deleteRow(at rowIndex: Int) {
         taskList?.taskArray.remove(at: rowIndex)
-        filteredTasks?.remove(at: rowIndex)
+        filteredTasksArray?.remove(at: rowIndex)
         
         tableView.deleteRows(at: [IndexPath(row: rowIndex, section: 0)], with: .automatic)
     }
@@ -183,7 +171,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         taskList = newTaskList
         navigationItem.title = taskList?.name
         
-        guard tableView != nil else {return}
+        fillFilteredTaskArray(by: "")
+        
+        guard tableView != nil else { return }
         tableView.reloadData()
     }
     
@@ -248,16 +238,35 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case 1:
             selectCompletedTasks()
         default:
-            filteredTasks = taskList?.taskArray
+            filteredTasksArray = taskList?.taskArray
         }
         tableView.reloadData()
     }
     
     func selectCompletedTasks() {
-        filteredTasks = []
+        filteredTasksArray = []
+        
+        guard taskList?.taskArray != nil else {
+            return
+        }
+        
         for task in taskList!.taskArray {
             if task .isCompleted {
-                filteredTasks?.append(task)
+                filteredTasksArray?.append(task)
+            }
+        }
+    }
+    
+    func fillFilteredTaskArray(by searchText: String) {
+        filteredTasksArray = []
+        
+        if searchText == "" {
+            filteredTasksArray = taskList?.taskArray
+        }
+        
+        for task in taskList!.taskArray {
+            if task.task.uppercased().contains(searchText.uppercased()) {
+                filteredTasksArray?.append(task)
             }
         }
     }
