@@ -122,7 +122,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rcR-jN-24U">
-                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
+                                <rect key="frame" x="0.0" y="163" width="414" height="733"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="84" id="xXA-ae-dvf" customClass="DetailCell" customModule="MyToDo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="84"/>
@@ -214,16 +214,26 @@
                                     <outlet property="delegate" destination="8tc-am-dEO" id="1fN-8F-6ca"/>
                                 </connections>
                             </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VEZ-Rb-EN6">
+                                <rect key="frame" x="0.0" y="132" width="414" height="32"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Done"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TyG-cx-jmh"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="rcR-jN-24U" secondAttribute="bottom" id="06Q-28-pjS"/>
-                            <constraint firstItem="rcR-jN-24U" firstAttribute="top" secondItem="pLY-Kh-HaT" secondAttribute="bottom" id="6k3-AX-yNW"/>
+                            <constraint firstItem="VEZ-Rb-EN6" firstAttribute="top" secondItem="pLY-Kh-HaT" secondAttribute="bottom" id="A48-KU-5QL"/>
+                            <constraint firstItem="TyG-cx-jmh" firstAttribute="trailing" secondItem="VEZ-Rb-EN6" secondAttribute="trailing" id="FiE-WH-cP3"/>
                             <constraint firstItem="rcR-jN-24U" firstAttribute="trailing" secondItem="TyG-cx-jmh" secondAttribute="trailing" id="JtZ-i2-MRa"/>
+                            <constraint firstItem="VEZ-Rb-EN6" firstAttribute="leading" secondItem="TyG-cx-jmh" secondAttribute="leading" id="Mdf-tn-vaR"/>
                             <constraint firstAttribute="bottom" secondItem="7bq-Yn-Bxi" secondAttribute="bottom" constant="10" id="Qn0-mN-Hxm"/>
                             <constraint firstItem="TyG-cx-jmh" firstAttribute="bottom" secondItem="7bq-Yn-Bxi" secondAttribute="bottom" priority="250" constant="10" id="UWw-Is-vxO"/>
                             <constraint firstItem="rcR-jN-24U" firstAttribute="leading" secondItem="TyG-cx-jmh" secondAttribute="leading" id="ck7-5S-NWA"/>
+                            <constraint firstItem="rcR-jN-24U" firstAttribute="top" secondItem="VEZ-Rb-EN6" secondAttribute="bottom" id="dXO-b8-79A"/>
                             <constraint firstItem="pLY-Kh-HaT" firstAttribute="top" secondItem="TyG-cx-jmh" secondAttribute="top" id="fDv-RC-OUu"/>
                             <constraint firstItem="TyG-cx-jmh" firstAttribute="trailing" secondItem="7bq-Yn-Bxi" secondAttribute="trailing" constant="10" id="fE2-om-sb9"/>
                             <constraint firstItem="pLY-Kh-HaT" firstAttribute="trailing" secondItem="TyG-cx-jmh" secondAttribute="trailing" id="rbF-OB-3u0"/>
@@ -236,6 +246,7 @@
                     <connections>
                         <outlet property="addTaskButton" destination="7bq-Yn-Bxi" id="EbN-zo-DmX"/>
                         <outlet property="searchBar" destination="pLY-Kh-HaT" id="G1S-ZM-LOk"/>
+                        <outlet property="sortSegmentControl" destination="VEZ-Rb-EN6" id="Zlz-pu-hqf"/>
                         <outlet property="tableView" destination="rcR-jN-24U" id="V7a-28-FBA"/>
                         <outlet property="tableViewBottomConstraint" destination="06Q-28-pjS" id="6ZD-av-lhu"/>
                     </connections>

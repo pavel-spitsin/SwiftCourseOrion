@@ -19,11 +19,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    var filteredTasks = [Task]()
+    var filteredTasks: [Task]? = nil
 
     let ghostTextView = UITextView()
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var sortSegmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
@@ -42,10 +43,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         ghostTextView.becomeFirstResponder()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        sortSegmentControl.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
+        
+        filteredTasks = taskList?.taskArray
+        
         view.addSubview(ghostTextView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -70,7 +75,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case 0:
             numberForFeturn = 0
         default:
-            numberForFeturn = filteredTasks.count
+            numberForFeturn = filteredTasks!.count
         }
         
         return numberForFeturn
@@ -81,11 +86,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         cell.delegate = self
         
-        cell.textView.text = filteredTasks[indexPath.row].task
+        cell.textView.text = filteredTasks![indexPath.row].task
         
         cell.indexPath = indexPath
         
-        switch taskList?.taskArray[indexPath.row].isCompleted {
+        switch filteredTasks![indexPath.row].isCompleted {
         case true:
             cell.isCheckmarkActive(active: true)
         default:
@@ -103,6 +108,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if editingStyle == .delete {
             tableView.beginUpdates()
             taskList?.taskArray.remove(at: indexPath.row)
+            filteredTasks?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
         }
@@ -135,14 +141,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         filteredTasks = []
         
         if searchText == "" {
-            for task in taskList!.taskArray {
-                filteredTasks.append(task)
-            }
+            filteredTasks = taskList?.taskArray
         }
         
         for task in taskList!.taskArray {
             if task.task.uppercased().contains(searchText.uppercased()) {
-                filteredTasks.append(task)
+                filteredTasks?.append(task)
             }
         }
         
@@ -152,6 +156,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = nil
+        filteredTasks = taskList?.taskArray
         searchBar.resignFirstResponder()
     }
     
@@ -166,6 +171,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func deleteRow(at rowIndex: Int) {
         taskList?.taskArray.remove(at: rowIndex)
+        filteredTasks?.remove(at: rowIndex)
+        
         tableView.deleteRows(at: [IndexPath(row: rowIndex, section: 0)], with: .automatic)
     }
     
@@ -234,4 +241,24 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollToLastCell, object: nil)
     }
     
+    @objc
+    func indexChanged(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 1:
+            selectCompletedTasks()
+        default:
+            filteredTasks = taskList?.taskArray
+        }
+        tableView.reloadData()
+    }
+    
+    func selectCompletedTasks() {
+        filteredTasks = []
+        for task in taskList!.taskArray {
+            if task .isCompleted {
+                filteredTasks?.append(task)
+            }
+        }
+    }
 }
