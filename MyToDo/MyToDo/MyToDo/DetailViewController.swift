@@ -11,16 +11,19 @@ extension Notification.Name {
     static let ScrollToLastCell = NSNotification.Name("ScrollToLastCell")
 }
 
-class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailCellDelegate, TaskListSelectionDelegate, UIScrollViewDelegate {
+class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailCellDelegate, TaskListSelectionDelegate, UIScrollViewDelegate, UISearchBarDelegate {
 
     var taskList: TaskList? {
         didSet {
             reloadInputViews()
         }
     }
-    
+
+    var filteredTasks = [Task]()
+
     let ghostTextView = UITextView()
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
@@ -28,6 +31,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func addTaskAction(_ sender: UIButton) {
         let newTask = Task()
         taskList?.taskArray.append(newTask)
+        
+        if searchBar.text == "" {
+            filteredTasks = taskList!.taskArray
+        }
+        
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath(row: (taskList?.taskArray.count)! - 1, section: 0)], with: .automatic)
         tableView.endUpdates()
@@ -62,7 +70,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case 0:
             numberForFeturn = 0
         default:
-            numberForFeturn = (taskList?.taskArray.count)!
+            numberForFeturn = filteredTasks.count
         }
         
         return numberForFeturn
@@ -72,8 +80,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         cell.delegate = self
+        
+        cell.textView.text = filteredTasks[indexPath.row].task
+        
         cell.indexPath = indexPath
-        cell.textView.text = String((taskList?.taskArray[indexPath.row].task)!)
         
         switch taskList?.taskArray[indexPath.row].isCompleted {
         case true:
@@ -113,6 +123,39 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
 
+    //MARK: - UISearchBarDelegate
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = true
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        filteredTasks = []
+        
+        if searchText == "" {
+            for task in taskList!.taskArray {
+                filteredTasks.append(task)
+            }
+        }
+        
+        for task in taskList!.taskArray {
+            if task.task.uppercased().contains(searchText.uppercased()) {
+                filteredTasks.append(task)
+            }
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+    }
+    
+    
     //MARK: - DetailCellDelegate
 
     func textChangedInCell(cell: DetailCell) {
@@ -190,4 +233,5 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         lastCell.textView.becomeFirstResponder()
         NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollToLastCell, object: nil)
     }
+    
 }
