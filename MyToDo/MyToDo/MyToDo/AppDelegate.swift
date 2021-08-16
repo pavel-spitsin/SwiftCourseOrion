@@ -28,10 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         masterViewController.delegate = detailViewController
         detailViewController.navigationItem.leftItemsSupplementBackButton = true
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-        /*
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { granted, error in }
-        */
+
         return true
     }
 }

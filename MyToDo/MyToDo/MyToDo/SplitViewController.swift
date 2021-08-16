@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SplitViewController: UISplitViewController, UISplitViewControllerDelegate {
+class SplitViewController: UISplitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,13 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
             }
         }
     }
-    
-    
-    //MARK: - UISplitViewControllerDelegate
-    
+}
+
+
+//MARK: - UISplitViewControllerDelegate
+
+extension SplitViewController: UISplitViewControllerDelegate {
+
     public func splitViewController(_ svc: UISplitViewController,
         topColumnForCollapsingToProposedTopColumn
         proposedTopColumn: UISplitViewController.Column) -> UISplitViewController.Column {

@@ -14,7 +14,7 @@ protocol DetailCellDelegate: AnyObject {
     func returnTaskList() -> TaskList
 }
 
-class DetailCell: UITableViewCell, UITextViewDelegate {
+class DetailCell: UITableViewCell {
 
     var indexPath = IndexPath()
     let checkmarkColor: CGColor = UIColor.lightGray.cgColor
@@ -64,8 +64,30 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
     }
     
     
-    //MARK: - UITextViewDelegate
+    //MARK: - Functions
+    
+    func isCheckmarkActive(active: Bool) {
+        
+        switch active {
+        case true:
+            checkmarkButton.backgroundColor = UIColor.systemGreen
+            checkmarkButton.layer.borderColor = UIColor.systemGreen.cgColor
+            
+            checkmarkButton.setImage(UIImage.init(systemName: "checkmark"), for: .normal)
+            textView.textColor = UIColor.lightGray
+        case false:
+            checkmarkButton.backgroundColor = UIColor.clear
+            checkmarkButton.layer.borderColor = UIColor.lightGray.cgColor
+            textView.textColor = UIColor.black
+        }
+    }
+}
 
+
+//MARK: - UITextViewDelegate
+
+extension DetailCell: UITextViewDelegate {
+    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         detailButton.isHidden = false
         return true
@@ -96,24 +118,5 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
             return false
         }
         return true
-    }
-    
-    
-    //MARK: - Functions
-    
-    func isCheckmarkActive(active: Bool) {
-        
-        switch active {
-        case true:
-            checkmarkButton.backgroundColor = UIColor.systemGreen
-            checkmarkButton.layer.borderColor = UIColor.systemGreen.cgColor
-            
-            checkmarkButton.setImage(UIImage.init(systemName: "checkmark"), for: .normal)
-            textView.textColor = UIColor.lightGray
-        case false:
-            checkmarkButton.backgroundColor = UIColor.clear
-            checkmarkButton.layer.borderColor = UIColor.lightGray.cgColor
-            textView.textColor = UIColor.black
-        }
     }
 }

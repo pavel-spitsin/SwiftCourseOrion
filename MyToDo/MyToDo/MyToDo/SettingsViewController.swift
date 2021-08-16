@@ -48,19 +48,35 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if task.notificationTime != nil {
+            numberOfRows = 2
+        }
+        
         return numberOfRows
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var returnedCell = UITableViewCell()
+        
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath) as! SettingsTableViewCell
             cell.switchDelegate = self
+            
+            if task.notificationTime != nil {
+                cell.timeSwitch.isOn = true
+            }
+            
             returnedCell = cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimeTableViewCell", for: indexPath) as! TimeTableViewCell
             cell.timeDelegate = self
+            
+            if task.notificationTime != nil {
+                cell.timePicker.date = task.notificationTime!
+            }
+            
             returnedCell = cell
         }
         return returnedCell
