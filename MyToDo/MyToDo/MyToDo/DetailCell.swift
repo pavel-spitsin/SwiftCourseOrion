@@ -10,6 +10,8 @@ import UIKit
 protocol DetailCellDelegate: AnyObject {
     func textChangedInCell(cell: DetailCell)
     func deleteRow(at rowIndex: Int)
+    func showSettingsViewController(viewController: UIViewController)
+    func returnTaskList() -> TaskList
 }
 
 class DetailCell: UITableViewCell, UITextViewDelegate {
@@ -24,20 +26,23 @@ class DetailCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func checkmarkAction(_ sender: UIButton) {
-
-        guard let vc = delegate as? DetailViewController else { return }
         
-        switch vc.taskList?.taskArray[indexPath.row].isCompleted {
+        switch delegate?.returnTaskList().taskArray[indexPath.row].isCompleted {
         case true:
             isCheckmarkActive(active: false)
-            vc.taskList?.taskArray[indexPath.row].isCompleted = false
+            delegate?.returnTaskList().taskArray[indexPath.row].isCompleted = false
         default:
             isCheckmarkActive(active: true)
-            vc.taskList?.taskArray[indexPath.row].isCompleted = true
+            delegate?.returnTaskList().taskArray[indexPath.row].isCompleted = true
         }
     }
     
     @IBAction func detailButtonAction(_ sender: UIButton) {
+        guard textView.text != "" else { return }
+        let settingsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        settingsViewController.navigationItem.title = "Напоминание"
+        settingsViewController.task = (delegate?.returnTaskList().taskArray[indexPath.row])!
+        delegate?.showSettingsViewController(viewController: settingsViewController)
     }
     
     override func awakeFromNib() {

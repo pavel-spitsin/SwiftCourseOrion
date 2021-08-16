@@ -68,6 +68,10 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             detailViewController.tableView.reloadData()
         }
+        
+        if tableView.visibleCells.count == 0 {
+            detailViewController.addTaskButton.isHidden = true
+        }
     }
     
     

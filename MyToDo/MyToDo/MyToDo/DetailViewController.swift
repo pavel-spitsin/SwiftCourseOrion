@@ -82,12 +82,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         cell.delegate = self
-        
         cell.textView.text = filteredTasksArray![indexPath.row].task
-        
         cell.indexPath = indexPath
         
         switch filteredTasksArray![indexPath.row].isCompleted {
@@ -162,6 +159,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         filteredTasksArray?.remove(at: rowIndex)
         
         tableView.deleteRows(at: [IndexPath(row: rowIndex, section: 0)], with: .automatic)
+    }
+    
+    func showSettingsViewController(viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func returnTaskList() -> TaskList {
+        return taskList!
     }
     
     

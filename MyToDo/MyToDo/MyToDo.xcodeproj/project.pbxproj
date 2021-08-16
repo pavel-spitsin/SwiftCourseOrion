@@ -18,6 +18,10 @@
 		FB0BA1E126C14444005CA96A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0BA1DF26C14444005CA96A /* LaunchScreen.storyboard */; };
 		FB0BA1E926C14B14005CA96A /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0BA1E826C14B14005CA96A /* TaskManager.swift */; };
 		FB0BA1EB26C14D0C005CA96A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0BA1EA26C14D0C005CA96A /* Task.swift */; };
+		FB1B0F8526CA58C50052B316 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B0F8426CA58C50052B316 /* SettingsViewController.swift */; };
+		FB1B0F8726CA5D410052B316 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B0F8626CA5D410052B316 /* SettingsTableViewCell.swift */; };
+		FB1B0F8926CA5D5B0052B316 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B0F8826CA5D5B0052B316 /* TimeTableViewCell.swift */; };
+		FB1B0F8B26CA86DA0052B316 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B0F8A26CA86DA0052B316 /* NotificationManager.swift */; };
 		FB2AEBE826C153960056498B /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AEBE726C153960056498B /* DetailCell.swift */; };
 		FB2AEBEA26C155A60056498B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AEBE926C155A60056498B /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +40,10 @@
 		FB0BA1E226C14444005CA96A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB0BA1E826C14B14005CA96A /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		FB0BA1EA26C14D0C005CA96A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		FB1B0F8426CA58C50052B316 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FB1B0F8626CA5D410052B316 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		FB1B0F8826CA5D5B0052B316 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		FB1B0F8A26CA86DA0052B316 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		FB2AEBE726C153960056498B /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		FB2AEBE926C155A60056498B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +88,10 @@
 				E94C97B126C2E8690034166B /* MasterCell.swift */,
 				FB2AEBE926C155A60056498B /* DetailViewController.swift */,
 				FB2AEBE726C153960056498B /* DetailCell.swift */,
+				FB1B0F8426CA58C50052B316 /* SettingsViewController.swift */,
+				FB1B0F8626CA5D410052B316 /* SettingsTableViewCell.swift */,
+				FB1B0F8826CA5D5B0052B316 /* TimeTableViewCell.swift */,
+				FB1B0F8A26CA86DA0052B316 /* NotificationManager.swift */,
 				FB0BA1DA26C14442005CA96A /* Main.storyboard */,
 				FB0BA1DD26C14444005CA96A /* Assets.xcassets */,
 				FB0BA1DF26C14444005CA96A /* LaunchScreen.storyboard */,
@@ -160,6 +172,10 @@
 			files = (
 				FB0BA1EB26C14D0C005CA96A /* Task.swift in Sources */,
 				FB0BA1E926C14B14005CA96A /* TaskManager.swift in Sources */,
+				FB1B0F8726CA5D410052B316 /* SettingsTableViewCell.swift in Sources */,
+				FB1B0F8526CA58C50052B316 /* SettingsViewController.swift in Sources */,
+				FB1B0F8B26CA86DA0052B316 /* NotificationManager.swift in Sources */,
+				FB1B0F8926CA5D5B0052B316 /* TimeTableViewCell.swift in Sources */,
 				FB2AEBEA26C155A60056498B /* DetailViewController.swift in Sources */,
 				E94C97B426C2EFE60034166B /* TaskList.swift in Sources */,
 				FB0BA1D926C14442005CA96A /* ViewController.swift in Sources */,
