@@ -7,33 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "060E8753-8FBC-44D5-AB1D-182132A0A8CF"
+            uuid = "323FCCF6-A821-4FF4-AED6-4E2BCD773B36"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyToDo/DetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "startSpeechRecognization()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A6959108-F206-412A-9401-41BC3A697F7A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyToDo/DetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "323FCCF6-A821-4FF4-AED6-4E2BCD773B36 - 82ff5f01e50fd1dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyToDo.DetailViewController.startSpeechRecognization() -&gt; ()"
+                  moduleName = "MyToDo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavel/Documents/Github/SwiftCourseOrion/MyToDo/MyToDo/MyToDo/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "1568">
+               </Location>
+               <Location
+                  uuid = "323FCCF6-A821-4FF4-AED6-4E2BCD773B36 - 5fd03df3d6f6280d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;__C.SFSpeechRecognitionResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MyToDo.DetailViewController.startSpeechRecognization() -&gt; ()"
+                  moduleName = "MyToDo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavel/Documents/Github/SwiftCourseOrion/MyToDo/MyToDo/MyToDo/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "246"
+                  endingLineNumber = "246"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

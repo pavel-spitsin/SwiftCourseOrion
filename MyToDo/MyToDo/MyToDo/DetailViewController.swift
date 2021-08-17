@@ -6,13 +6,13 @@
 //
 
 import UIKit
-
-extension Notification.Name {
-    static let ScrollToLastCell = NSNotification.Name("ScrollToLastCell")
-}
+import Speech
 
 class DetailViewController: UIViewController {
 
+    var timer: Timer? = nil
+    
+    
     var taskList: TaskList? {
         didSet {
             reloadInputViews()
@@ -20,14 +20,37 @@ class DetailViewController: UIViewController {
     }
 
     var filteredTasksArray: [Task]? = nil
-
     let ghostTextView = UITextView()
     
+    //Speech properties
+    let audioEngine = AVAudioEngine()
+    let speechReconizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    let request = SFSpeechAudioBufferRecognitionRequest()
+    var task: SFSpeechRecognitionTask?
+    var isStart: Bool = false
+    
+    //MicAnimation
+    var micImageView: UIImageView? = nil
+    var waveView: UIView? = nil
+    
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var sortSegmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+    
+    
+    @IBAction func microphoneButtonAction(_ sender: UIButton) {
+        
+        isStart = !isStart
+        
+        if isStart {
+            startSpeechRecognization()
+        } else {
+            cancelSpeechRecognization()
+        }
+    }
     
     @IBAction func addTaskAction(_ sender: UIButton) {
         let newTask = Task()
@@ -46,6 +69,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkSpeechPermission()
         
         searchBar.searchBarStyle = .minimal
         
@@ -158,6 +183,140 @@ class DetailViewController: UIViewController {
                 filteredTasksArray?.append(task)
             }
         }
+    }
+    
+    func checkSpeechPermission() {
+        microphoneButton.isEnabled = false
+        SFSpeechRecognizer.requestAuthorization { (authState) in
+            OperationQueue.main.addOperation {
+                switch authState {
+                case .authorized:
+                    self.microphoneButton.isEnabled = true
+                default:
+                    self.showAlertView(message: "Not authorized")
+                }
+            }
+        }
+    }
+
+    func startSpeechRecognization() {
+        
+        searchBar.text = ""
+        
+        startMicLogoAnimation()
+        microphoneButton.tintColor = .systemRed
+        
+        let node = audioEngine.inputNode
+        let recordingFormat = node.outputFormat(forBus: 0)
+            
+        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
+            self.request.append(buffer)
+        }
+            
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch let error {
+            showAlertView(message: "Error comes here for starting the audio listner =\(error.localizedDescription)")
+        }
+        
+        guard let myRecognization = SFSpeechRecognizer() else {
+            self.showAlertView(message: "Recognization is not allow on your local")
+            return
+        }
+            
+        if !myRecognization.isAvailable {
+            self.showAlertView(message: "Recognization is free right now, Please try again after some time.")
+        }
+            
+        task = speechReconizer?.recognitionTask(with: request, resultHandler: { (response, error) in
+            
+            var isFinal = false
+            if let result = response {
+                
+                let message = result.bestTranscription.formattedString
+                self.searchBar.text = message
+                
+                isFinal = result.isFinal
+            }
+            if isFinal {
+                self.cancelSpeechRecognization()
+            }
+            else if error == nil {
+                self.restartSpeechTimer()
+            }
+            
+        })
+    }
+    
+    func cancelSpeechRecognization() {
+        
+        isStart = false
+        
+        stopMicLogoAnimation()
+        searchBar.resignFirstResponder()
+        microphoneButton.tintColor = .systemBlue
+        
+        request.endAudio()
+        task?.finish()
+        audioEngine.stop()
+
+        if audioEngine.inputNode.numberOfInputs > 0 {
+            audioEngine.inputNode.removeTap(onBus: 0)
+        }
+        task?.cancel()
+    }
+    
+    func showAlertView(message: String) {
+        let alertController = UIAlertController.init(title: "Error ocured...", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            alertController.dismiss(animated: true, completion: nil)
+        }))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func restartSpeechTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
+            self.cancelSpeechRecognization()
+        })
+    }
+    
+    
+    func startMicLogoAnimation() {
+        
+        waveView = UIView()
+        waveView?.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        waveView?.center = view.center
+        waveView?.backgroundColor = UIColor.systemBlue
+        waveView?.layer.cornerRadius = (waveView?.bounds.height)! / 2
+        view.addSubview(waveView!)
+        
+        let micSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 0.5, weight: .thin, scale: .small)
+        let micImage = UIImage(systemName: "mic.fill", withConfiguration: micSymbolConfiguration)
+        micImageView = UIImageView()
+        micImageView?.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        micImageView?.center = view.center
+        micImageView?.backgroundColor = UIColor.systemBlue
+        micImageView?.layer.cornerRadius = 50
+        micImageView?.image = micImage
+        micImageView?.tintColor = UIColor.white
+        micImageView?.backgroundColor = UIColor.systemBlue
+        view.addSubview(micImageView!)
+        
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       options: [.repeat],
+                       animations: {
+                        self.waveView?.transform = CGAffineTransform(scaleX: 3, y: 3)
+                        self.waveView?.alpha = 0
+                       },
+                       completion: nil)
+    }
+    
+    func stopMicLogoAnimation() {
+        waveView?.removeFromSuperview()
+        micImageView?.removeFromSuperview()
     }
 }
 
@@ -297,3 +456,9 @@ extension DetailViewController: UISearchBarDelegate {
     }
 }
 
+
+//MARK: - Notification extensions
+
+extension Notification.Name {
+    static let ScrollToLastCell = NSNotification.Name("ScrollToLastCell")
+}

@@ -358,6 +358,9 @@
                                     <imageReference key="image" image="mic" catalog="system" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                                 </state>
+                                <connections>
+                                    <action selector="microphoneButtonAction:" destination="8tc-am-dEO" eventType="touchUpInside" id="g3C-k2-4p5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TyG-cx-jmh"/>
@@ -385,6 +388,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addTaskButton" destination="7bq-Yn-Bxi" id="EbN-zo-DmX"/>
+                        <outlet property="microphoneButton" destination="N5Z-po-5Ab" id="1TQ-1w-hPr"/>
                         <outlet property="searchBar" destination="pLY-Kh-HaT" id="G1S-ZM-LOk"/>
                         <outlet property="sortSegmentControl" destination="VEZ-Rb-EN6" id="Zlz-pu-hqf"/>
                         <outlet property="tableView" destination="rcR-jN-24U" id="V7a-28-FBA"/>
