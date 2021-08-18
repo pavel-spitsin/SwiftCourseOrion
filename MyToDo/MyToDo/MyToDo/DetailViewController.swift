@@ -255,6 +255,7 @@ class DetailViewController: UIViewController {
         
         stopMicLogoAnimation()
         searchBar.resignFirstResponder()
+        searchBarTextChanged(text: searchBar.text!)
         microphoneButton.tintColor = .systemBlue
         
         request.endAudio()
@@ -444,7 +445,11 @@ extension DetailViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        fillFilteredTaskArray(by: searchText)
+        searchBarTextChanged(text: searchText)
+    }
+    
+    func searchBarTextChanged(text: String) {
+        fillFilteredTaskArray(by: text)
         tableView.reloadData()
     }
     
