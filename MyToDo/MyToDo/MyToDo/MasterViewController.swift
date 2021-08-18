@@ -12,7 +12,7 @@ protocol TaskListSelectionDelegate: AnyObject {
 }
 
 class MasterViewController: UIViewController {
-    
+
     var startIndexPath = IndexPath()
     var endIndexPath: IndexPath? = nil
 
@@ -26,10 +26,18 @@ class MasterViewController: UIViewController {
     }
     
     
+    @IBAction func saveDataAction(_ sender: UIBarButtonItem) {
+        //TaskManager.shared().deleteData()
+        TaskManager.shared().saveData()
+    }
+    
+    
     //MARK: - UIViewControllerLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(dataDidFetched), name: .DataDidFetched, object: nil)
+
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
         tableView.dropDelegate = self
@@ -37,7 +45,7 @@ class MasterViewController: UIViewController {
 
     
     // MARK: - Functions
-    
+
     func createAlertController() {
         let alert = UIAlertController(title: "New tasklist", message: "Enter tasklist name", preferredStyle: .alert)
         alert.addTextField()
@@ -53,6 +61,7 @@ class MasterViewController: UIViewController {
             default:
                 newTaskList.name = (alert.textFields?[0].text)!
             }
+            
             self.tableView.reloadData()
             self.loadDetailViewControllerForTaskList(taskList: newTaskList)
         }))
@@ -81,6 +90,11 @@ class MasterViewController: UIViewController {
                 masterCell.removeIndicator()
             }
         }
+    }
+    
+    @objc
+    func dataDidFetched() {
+        tableView.reloadData()
     }
 }
 

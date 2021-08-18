@@ -84,6 +84,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="ToDo" id="Jcu-OM-i1J">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="save" id="DmK-DU-khg">
+                            <connections>
+                                <action selector="saveDataAction:" destination="Slo-Hf-wMN" id="gPP-6A-D8T"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yHt-oI-Evw">
                             <connections>
                                 <action selector="addBarButtonAction:" destination="Slo-Hf-wMN" id="hgX-gM-YDJ"/>

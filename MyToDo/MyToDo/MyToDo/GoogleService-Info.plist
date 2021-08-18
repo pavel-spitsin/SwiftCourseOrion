@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>676598438096-dtc4bfduncip2lerab4t3mich98a9rs2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.676598438096-dtc4bfduncip2lerab4t3mich98a9rs2</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAyjUHAdin6rYFafQIVqq1KkPU3bNW6vGo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>676598438096</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.pavelspitsin.MyToDo</string>
+	<key>PROJECT_ID</key>
+	<string>mytodo-e5e96</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mytodo-e5e96.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:676598438096:ios:d6e1388bca5d5b01e1e6d5</string>
+	<key>DATABASE_URL</key>
+	<string>https://mytodo-e5e96-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
