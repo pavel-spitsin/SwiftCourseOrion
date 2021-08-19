@@ -26,12 +26,6 @@ class MasterViewController: UIViewController {
     }
     
     
-    @IBAction func saveDataAction(_ sender: UIBarButtonItem) {
-        //TaskManager.shared().deleteData()
-        TaskManager.shared().saveData()
-    }
-    
-    
     //MARK: - UIViewControllerLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()

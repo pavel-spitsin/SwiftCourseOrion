@@ -8,6 +8,10 @@
 import Foundation
 
 class TaskList {
-    var taskArray = [Task]()
+    var taskArray = [Task]() {
+        didSet {
+            TaskManager.shared().saveData()
+        }
+    }
     var name = String()
 }

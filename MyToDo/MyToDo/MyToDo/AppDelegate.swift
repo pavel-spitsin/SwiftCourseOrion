@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         TaskManager.shared().loadData()
-        TaskManager.shared().deleteData()
         
         guard
           let splitViewController = window?.rootViewController as? UISplitViewController,
@@ -37,10 +36,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-    /*
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        TaskManager.shared().saveData()
-    }*/
-    
 }
 

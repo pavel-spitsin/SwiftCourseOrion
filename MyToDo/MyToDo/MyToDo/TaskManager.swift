@@ -8,17 +8,12 @@
 import Foundation
 
 class TaskManager {
-    
-    //Firebase
-    var todoItems = [TodoItem]() {
-        didSet {
-            print("todo items was set")
-        }
-    }
-    
+
     var taskListArray = [TaskList]() {
         didSet {
-            NotificationCenter.default.post(name: Notification.Name.DataDidFetched, object: nil)
+            NotificationCenter.default.post(name: .DataDidFetched, object: nil)
+            
+            saveData()
         }
     }
     
@@ -36,17 +31,19 @@ class TaskManager {
     //MARK: - Data Actions
     
     func loadData() {
-        PostService.shared.fetchAllItems { (allItems) in
-            self.todoItems = allItems
+        PostService.shared.fetchAllItems { taskList in
+            self.taskListArray = taskList
+            //PostService.shared.deleteData()
         }
     }
     
     func saveData() {
+        deleteData()
         PostService.shared.uploadTaskListArray()
     }
     
     func deleteData() {
-        PostService.shared.deleteData()
+        PostService.shared.removeData()
     }
 }
 

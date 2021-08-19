@@ -341,6 +341,7 @@ extension DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         cell.delegate = self
         cell.textView.text = filteredTasksArray![indexPath.row].task
@@ -390,6 +391,7 @@ extension DetailViewController: DetailCellDelegate {
         tableView.beginUpdates()
         taskList?.taskArray[cell.indexPath.row].task = cell.textView.text
         tableView.endUpdates()
+        
     }
     
     func deleteRow(at rowIndex: Int) {

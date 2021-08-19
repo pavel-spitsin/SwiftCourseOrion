@@ -88,7 +88,6 @@
 		FB0BA1C826C14442005CA96A = {
 			isa = PBXGroup;
 			children = (
-				FB069D9326CD04720080931B /* PostServise.swift */,
 				FB0BA1D326C14442005CA96A /* MyToDo */,
 				FB0BA1D226C14442005CA96A /* Products */,
 				75D2DDDDAA09EEC105D4005F /* Pods */,
@@ -107,6 +106,7 @@
 		FB0BA1D326C14442005CA96A /* MyToDo */ = {
 			isa = PBXGroup;
 			children = (
+				FB069D9326CD04720080931B /* PostServise.swift */,
 				FB0BA1D426C14442005CA96A /* AppDelegate.swift */,
 				FB0BA1D826C14442005CA96A /* ViewController.swift */,
 				E94C97B526C465A80034166B /* SplitViewController.swift */,

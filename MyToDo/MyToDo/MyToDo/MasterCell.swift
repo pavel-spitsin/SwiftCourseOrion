@@ -11,11 +11,14 @@ class MasterCell: UITableViewCell {
 
     var indicatorLine: UIView?
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel! {
+        didSet {
+            TaskManager.shared().saveData()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         selectionStyle = .none
     }
 

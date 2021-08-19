@@ -8,10 +8,29 @@
 import Foundation
 
 class Task {
-    var isCompleted: Bool = false
-    var task = String()
-    var notificationTime: Date? = nil
-    var notificationIdentifier = String()
+    var task = String() {
+        didSet {
+            TaskManager.shared().saveData()
+        }
+    }
+    
+    var isCompleted: Bool = false  {
+        didSet {
+            TaskManager.shared().saveData()
+        }
+    }
+    
+    var notificationTime: Date? = nil  {
+        didSet {
+            TaskManager.shared().saveData()
+        }
+    }
+    
+    var notificationIdentifier = String()  {
+        didSet {
+            TaskManager.shared().saveData()
+        }
+    }
     
     init() {
         let dateFormatter = DateFormatter()
