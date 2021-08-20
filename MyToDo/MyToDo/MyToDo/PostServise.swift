@@ -24,23 +24,23 @@ struct PostService {
             taskList.name = key
             
             let value = snapshot.value as! [String: Any]
-            let kArray = value.keys.sorted()
+            let keysArray = value.keys.sorted()
             
-            for k in kArray {
+            for keyItem in keysArray {
                 let task = Task()
                 
-                let v = value[k] as! [String: Any]
+                let valueItem = value[keyItem] as! [String: Any]
                 
-                task.task = v["task"] as! String
-                task.isCompleted = v["isCompleted"] as! Bool
+                task.task = valueItem["task"] as! String
+                task.isCompleted = valueItem["isCompleted"] as! Bool
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                let str = v["notificationTime"] as! String
+                let str = valueItem["notificationTime"] as! String
                 let date = dateFormatter.date(from: str)
                 task.notificationTime = date
                 
-                task.notificationIdentifier = v["notificationIdentifier"] as! String
+                task.notificationIdentifier = valueItem["notificationIdentifier"] as! String
                 
                 taskList.taskArray.append(task)
             }

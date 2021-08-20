@@ -25,6 +25,8 @@ class DetailViewController: UIViewController {
     //Speech properties
     let audioEngine = AVAudioEngine()
     let speechReconizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    //For localization
+    //let speechReconizer: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale(identifier: "ru-RU"))
     let request = SFSpeechAudioBufferRecognitionRequest()
     var task: SFSpeechRecognitionTask?
     var isStart: Bool = false
@@ -53,6 +55,10 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func addTaskAction(_ sender: UIButton) {
+        
+        searchBar.text = ""
+        searchBarTextChanged(text: "")
+
         let newTask = Task()
         taskList?.taskArray.append(newTask)
         
@@ -94,7 +100,8 @@ class DetailViewController: UIViewController {
 
     //MARK: - Functions
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc
+    func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
 
             let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
@@ -108,7 +115,8 @@ class DetailViewController: UIViewController {
         }
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
         
         let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
 
@@ -160,9 +168,7 @@ class DetailViewController: UIViewController {
     func selectCompletedTasks() {
         filteredTasksArray = []
         
-        guard taskList?.taskArray != nil else {
-            return
-        }
+        guard taskList?.taskArray != nil else { return }
         
         for task in taskList!.taskArray {
             if task .isCompleted {
@@ -245,7 +251,6 @@ class DetailViewController: UIViewController {
             else if error == nil {
                 self.restartSpeechTimer()
             }
-            
         })
     }
     
@@ -460,6 +465,7 @@ extension DetailViewController: UISearchBarDelegate {
         searchBar.text = nil
         filteredTasksArray = taskList?.taskArray
         searchBar.resignFirstResponder()
+        tableView.reloadData()
     }
 }
 

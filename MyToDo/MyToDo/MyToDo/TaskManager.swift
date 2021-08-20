@@ -12,7 +12,6 @@ class TaskManager {
     var taskListArray = [TaskList]() {
         didSet {
             NotificationCenter.default.post(name: .DataDidFetched, object: nil)
-            
             saveData()
         }
     }
